@@ -1,0 +1,146 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Int
+  reviews     Review[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Hotel {
+  HotelId     String   @id @default(cuid())
+  HotelName   String
+  Website     String
+  location    String
+  category    String
+}
+
+model Hotel_location {
+  id          String   @id @default(cuid())
+  loc_Lat     String
+  loc_Lng     String
+  loc_Place   String
+  loc_City    String
+  loc_State   String
+  loc_Country String
+}
+
+model Hotel_about {
+  id                    String   @id @default(cuid())
+  frontImg              String //image
+  gallery               String //galery image
+  phoneNumber           Int
+  countryCode           String
+  email                 String
+  hotelDescription      String
+  reviewNumber          Int//String
+  tags                  String // ["Bar", "breakfast"],
+  specialTags           String // "Recommended",
+  popularityNumber      Int
+  dateAdded             DateTime
+  trendingNumber        Int
+  social_Network_Links  String
+  reviews               String
+  policies              String
+  rooms                 String
+}
+
+model Tags {
+  id      String   @id @default(cuid())
+  tag1    String
+  tag2    String
+}
+
+model Social_Network_Links {
+  id          String   @id @default(cuid())
+  facebook    String
+  twinter     String
+  instagram   String
+  pinterest   String
+}
+
+model Review {
+  id              String   @id @default(cuid())
+  rating          Decimal
+  user            String
+  date            DateTime
+  hotel_review    String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Policies {
+  id        String   @id @default(cuid())
+  policy1   String
+  policy2   String
+}
+
+model Room_card {
+  room_id                     String    @id @default(cuid())
+  room_name                   String
+  amenities                   String // Aminities list
+  inclusions                  String // inclusions list
+  original_price_per_night    Int
+  discount                    Int
+  about                       String
+  facility                    String
+}
+
+model Amenities {
+  id         String   @id @default(cuid())
+  //"Queen", "Coffee kit", "Couch", "Gym"
+}
+
+model Inclusions {
+  id         String   @id @default(cuid())
+  // Inclusion List
+}
+
+model Customers {
+  id                String   @id @default(cuid())
+  first_name        String
+  last_name         String
+  gender            String
+  street_address    String
+  city              String
+  state             String
+  zip_code          String
+  email             String
+  phone_number      String
+  password          String
+  bookings          String // Bookings list
+}
+
+model Payments {
+  id                  String   @id @default(cuid())
+  card_first_name     String
+  card_second_name    String
+  card_bank_entity    String
+  card_number         String
+  card_type           String
+  card_year           String
+  card_month          String
+  card_ccv            String
+  status              String // Validate type
+}
+
+model Booking {
+  id                  String   @id @default(cuid())
+  hotel_name          String
+  room_type           String
+  date_of_stay        DateTime
+  number_of_guest     String
+}
