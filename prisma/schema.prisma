@@ -11,136 +11,132 @@ datasource db {
 }
 
 model Product {
-  id          String   @id @default(cuid())
-  name        String
-  description String
-  price       Int
-  reviews     Review[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                  String   @id @default(cuid())
+  name                String
+  description         String
+  price               Int
+  reviews             Review[]
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
 
-model Hotel {
-  HotelId     String   @id @default(cuid())
-  HotelName   String
-  Website     String
-  location    String
-  category    String
-}
-
-model Hotel_location {
-  id          String   @id @default(cuid())
-  loc_Lat     String
-  loc_Lng     String
-  loc_Place   String
-  loc_City    String
-  loc_State   String
-  loc_Country String
-}
-
-model Hotel_about {
-  id                    String   @id @default(cuid())
-  frontImg              String //image
-  gallery               String //galery image
-  phoneNumber           Int
-  countryCode           String
-  email                 String
-  hotelDescription      String
-  reviewNumber          Int//String
-  tags                  String // ["Bar", "breakfast"],
-  specialTags           String // "Recommended",
-  popularityNumber      Int
-  dateAdded             DateTime
-  trendingNumber        Int
-  social_Network_Links  String
-  reviews               String
-  policies              String
-  rooms                 String
+// Hotels and Rooms information
+model Hotels {
+  HotelId             String   @id @default(cuid())
+  HotelName           String
+  Website             String
+  location            String
+  category            String //Review later
+  loc_Lat             String
+  loc_Lng             String
+  loc_Place           String
+  loc_City            String
+  loc_State           String
+  loc_Country         String
+  FrontImg            String //image
+  Gallery             String //galery image
+  PhoneNumber         String
+  CountryCode         String
+  Email               String
+  HotelDescription    String
+  StarRating          Float
+  ReviewNumber        Int//String
+  Tags                String // ["Bar", "breakfast"],
+  SpecialTags         String // "Recommended",
+  PopularityNumber    Int
+  DateAdded           DateTime
+  TrendingNumber      Int
+  SN_Facebook         String
+  SN_Twitter          String
+  SN_Instagram        String
+  SN_Pinterest        String
+  Reviews             String
+  Policies            String
+  Rooms               String
 }
 
 model Tags {
-  id      String   @id @default(cuid())
-  tag1    String
-  tag2    String
+  id                  String   @id @default(cuid())
+  Tag1                String
+  Tag2                String
 }
 
-model Social_Network_Links {
-  id          String   @id @default(cuid())
-  facebook    String
-  twinter     String
-  instagram   String
-  pinterest   String
-}
-
-model Review {
-  id              String   @id @default(cuid())
-  rating          Decimal
-  user            String
-  date            DateTime
-  hotel_review    String
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+model Reviews {
+  id                  String   @id @default(cuid())
+  Rating              Decimal
+  User                String
+  Date                DateTime
+  RotelReview         String
 }
 
 model Policies {
-  id        String   @id @default(cuid())
-  policy1   String
-  policy2   String
+  id                  String   @id @default(cuid())
+  policy1             String
+  policy2             String
 }
 
-model Room_card {
+model Rooms {
   room_id                     String    @id @default(cuid())
-  room_name                   String
-  amenities                   String // Aminities list
-  inclusions                  String // inclusions list
-  original_price_per_night    Int
-  discount                    Int
-  about                       String
-  facility                    String
+  Available                   Boolean
+  RoomImg                     String
+  RoomName                    String
+  Amenities                   String // Aminities list
+  Inclusions                  String // inclusions list
+  OriginalPricePerNight       Int
+  Discount                    Int
+  About                       String
+  Facility                    String
 }
 
 model Amenities {
-  id         String   @id @default(cuid())
-  //"Queen", "Coffee kit", "Couch", "Gym"
+  id          String   @id @default(cuid())
+  Amenity1    String //Bed, Instalations, etc.
+  Amenity2    String //Coffe kit
+  Amenity3    String // Couch
+  Amenity4    String // Gym
 }
 
 model Inclusions {
-  id         String   @id @default(cuid())
+  id            String   @id @default(cuid())
+  Inclusion1    String
+  Inclusion2    String
   // Inclusion List
 }
 
+// Customers, Users and Administrator Information
 model Customers {
-  id                String   @id @default(cuid())
-  first_name        String
-  last_name         String
-  gender            String
-  street_address    String
-  city              String
-  state             String
-  zip_code          String
-  email             String
-  phone_number      String
-  password          String
-  bookings          String // Bookings list
+  CustomerId                String   @id @default(cuid())
+  FirstName        String
+  LastName         String
+  Gender           String
+  StreetAddress    String
+  City             String
+  State            String
+  ZipCode          String
+  Email            String
+  PhoneNumber      String
+  Password         String
+  Bookings         String // Bookings list
 }
 
 model Payments {
-  id                  String   @id @default(cuid())
-  card_first_name     String
-  card_second_name    String
-  card_bank_entity    String
-  card_number         String
-  card_type           String
-  card_year           String
-  card_month          String
-  card_ccv            String
-  status              String // Validate type
+  PaymentsId                  String   @id @default(cuid())
+  CardFirstName     String
+  CardSecondName    String
+  CardBankEntity    String
+  CardNumber        String
+  CardType          String
+  CardYear          String
+  CardMonth         String
+  CardCcv           String
+  Status            String // Validate type
 }
 
 model Booking {
-  id                  String   @id @default(cuid())
-  hotel_name          String
-  room_type           String
-  date_of_stay        DateTime
-  number_of_guest     String
+  BookingId           String   @id @default(cuid())
+  HotelName           String
+  RoomType            String
+  DateOfStay          DateTime
+  NumberOfGuest       String
 }
+
