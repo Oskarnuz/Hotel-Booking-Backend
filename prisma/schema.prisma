@@ -61,12 +61,12 @@ model Tags {
   Tag2                String
 }
 
-model Reviews {
+model Review {
   id                  String   @id @default(cuid())
   Rating              Decimal
   User                String
   Date                DateTime
-  RotelReview         String
+  HotelReview         String
 }
 
 model Policies {

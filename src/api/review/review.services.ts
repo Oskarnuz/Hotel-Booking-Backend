@@ -4,7 +4,14 @@ const prisma = new PrismaClient()
 
 
 export const getAllReviews = () => {
-  return prisma.review.findMany()
+  return prisma.review.findMany({
+    select: {
+      id: true,
+      user: true,
+      date: true,
+      hotelReview: true
+    }
+  })
 }
 
 export const getReviewById = (id: string) => {
@@ -18,9 +25,10 @@ export const getReviewById = (id: string) => {
 export const createReview = (input: any) => {
   return prisma.review.create({
     data: {
-      text: input.text,
       rating: parseInt(input.rating),
-      product: {
+      user: input.user,
+      date: input.date,
+      hotelReview: input.hotelReview,
         connect:{
           id: input.productId
         }
