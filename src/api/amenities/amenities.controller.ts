@@ -55,7 +55,7 @@ export const deleteAmenitiesController = async (
   try {
     const { id } = req.params;
     const Amenities = await deleteAmenities(id);
-    res.json(Amenities);
+    res.json(Policies);
   } catch(error: any) {
     res.status(500).json({ message: error.message })
   }

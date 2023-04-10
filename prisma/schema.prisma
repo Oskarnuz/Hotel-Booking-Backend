@@ -15,7 +15,7 @@ model Product {
   name                String
   description         String
   price               Int
-  reviews             Review[]
+  reviews             String
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 }
@@ -57,8 +57,7 @@ model Hotels {
 
 model Tags {
   id                  String   @id @default(cuid())
-  Tag1                String
-  Tag2                String
+  name                String
 }
 
 model Review {
@@ -90,33 +89,31 @@ model Rooms {
 
 model Amenities {
   id          String   @id @default(cuid())
-  Amenity1    String //Bed, Instalations, etc.
-  Amenity2    String //Coffe kit
-  Amenity3    String // Couch
-  Amenity4    String // Gym
+  name        String //Bed, Instalations, etc.
 }
 
 model Inclusions {
   id            String   @id @default(cuid())
-  Inclusion1    String
-  Inclusion2    String
+  name          String
   // Inclusion List
 }
 
 // Customers, Users and Administrator Information
-model Customers {
-  CustomerId                String   @id @default(cuid())
-  FirstName        String
-  LastName         String
-  Gender           String
-  StreetAddress    String
-  City             String
-  State            String
-  ZipCode          String
-  Email            String
-  PhoneNumber      String
-  Password         String
-  Bookings         String // Bookings list
+model customer{
+  id               String   @id @default(cuid())
+  firstName        String
+  lastName         String
+  gender           String
+  streetAddress    String
+  city             String
+  state            String
+  zipCode          String
+  email            String
+  phoneNumber      String
+  password         String
+  bookings         String // Bookings list
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 }
 
 model Payments {
