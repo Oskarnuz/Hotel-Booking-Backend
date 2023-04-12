@@ -1,6 +1,7 @@
 import { Response, Request, NextFunction } from "express";
 
 import { getAllCustomers, updateCustomer, getCustomerById, deleteCustomer, createCustomer } from "./customer.services";
+import { AuthCustomer } from "../../auth/auth.types";
 
 export const getAllCustomersController = async (
   req: Request,
@@ -48,19 +49,18 @@ export const getCustomerByIdController = async (
 }
 
 export const updateCustomerController = async (
-  req: Request,
+  req: AuthCustomer,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const { id } = req.params
-    const customer = await updateCustomer(id, req.body)
+    const id = req.customer ? req.customer : ''
 
-    if(!customer) {
-      return res.status(404).json({ message: 'Customer not found' })
-    }
+    const customer = await getCustomerById(id);
 
-    res.status(201).json({ message: 'Customer updated', data: customer })
+    const customerUpdated = await updateCustomer(id, {...req.body, password: customer?.password});
+    res.status(200).json({ message: 'Customer updated', data: customerUpdated });
+
   } catch(error: any) {
     res.status(500).json({ message: error.message })
   }

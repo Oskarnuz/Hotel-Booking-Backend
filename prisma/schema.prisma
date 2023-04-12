@@ -106,7 +106,7 @@ model customer{
   city             String
   state            String
   zipCode          String
-  email            String
+  email            String   @unique
   phoneNumber      String
   password         String
   bookings         String // Bookings list

@@ -66,6 +66,7 @@ export const getCustomerById = (id: string) => {
       createdAt: true,
       updatedAt: true
     }
+  
   })
 }
 
