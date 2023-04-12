@@ -21,7 +21,7 @@ model Product {
 }
 
 // Hotels and Rooms information
-model Hotels {
+model Hotel {
   HotelId             String   @id @default(cuid())
   HotelName           String
   Website             String
@@ -79,8 +79,6 @@ model Rooms {
   Available                   Boolean
   RoomImg                     String
   RoomName                    String
-  Amenities                   String // Aminities list
-  Inclusions                  String // inclusions list
   OriginalPricePerNight       Int
   Discount                    Int
   About                       String

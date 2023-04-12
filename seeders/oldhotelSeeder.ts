@@ -12,7 +12,7 @@ const randomHotelImage = (): string => {
 
 const seedHotel = async (prisma: PrismaClient): Promise<void> => {
   const hotels: any = []
-  for(let i = 0; i < 25; i++) {
+  for(let i = 0; i < 3; i++) {
     let companyName = faker.company.companyName();
     
     const tagsArr = [
@@ -305,12 +305,14 @@ const seedHotel = async (prisma: PrismaClient): Promise<void> => {
 
     hotels.push(hotel)
   }
-
-  await prisma.hotels.createMany({
+  console.log("XXXXXX", hotels);
+  await prisma.hotel.createMany({
     data: hotels
   })
 
   console.log('Hotels seeded successfully');
 }
+
+
 
 export default seedHotel

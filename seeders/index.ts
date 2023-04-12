@@ -1,11 +1,10 @@
 import { PrismaClient } from "@prisma/client";
+import seedRoom from "./roomSeeder";
 import seedProduct from "./productSeeder";
-import seedReview from "./reviewSeeder";
-import seedHotel from "./hotelSeeder";
 
 const prisma = new PrismaClient()
 
-const seeders = [ seedProduct, seedReview ]
+const seeders = [ seedProduct, seedRoom ]
 
 const seed = async() => {
   for(const seeder of seeders) {
@@ -15,9 +14,11 @@ const seed = async() => {
 
 seed()
   .catch((error) => {
-    console.error(error);
+    console.error("ERROR", error);
     process.exit(1)
   })
   .finally(async () => {
     await prisma.$disconnect();
   })
+
+  export default seed

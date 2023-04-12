@@ -10,7 +10,8 @@ const seedProduct = async (prisma: PrismaClient): Promise<void> => {
     const product = {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
-      price: parseInt(faker.commerce.price())
+      price: parseInt(faker.commerce.price()),
+      reviews: faker.lorem.paragraph()
     }
 
     products.push(product)
