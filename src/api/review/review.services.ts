@@ -25,26 +25,28 @@ export const getReviewById = (id: string) => {
 export const createReview = (input: any) => {
   return prisma.review.create({
     data: {
-      rating: parseInt(input.rating),
+      rating: Math.floor(input.rating),
       user: input.user,
       date: input.date,
       hotelReview: input.hotelReview,
         connect:{
-          id: input.productId
+          id: input.hotel.id
         }
       }
     }
-  })
+  )
 }
 
-export const updateReview = (id: string, review: any) => {
+export const updateReview = (id: string, input: any) => {
   return prisma.review.update({
     where: {
       id: id,
     },
     data: {
-      text: review.text,
-      rating: parseInt(review.rating),
+      rating: Math.floor(review.rating),
+      user: input.user,
+      date: input.date,
+      hotelReview: input.hotelReview
     },
   });
 }

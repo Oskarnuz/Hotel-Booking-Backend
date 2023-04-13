@@ -6,8 +6,7 @@ export const getAllPolicies = () => {
   return prisma.policies.findMany({
     select: {
       id: true,
-      policy1: true,
-      policy2: true
+      name: true
     }
   })
 }
@@ -15,8 +14,7 @@ export const getAllPolicies = () => {
 export const createPolicies = (input: any) => {
   return prisma.policies.create({
     data: {
-      policy1: input.policy1,
-      policy2: input.policy2
+      name: input.name
     }
   })
 }
@@ -27,8 +25,7 @@ export const updatePolicies = (id: string, input: any) => {
       id: id,
     },
     data: {
-      policy1: input.policy1,
-      policy2: input.policy2
+      name: input.name
     }
   })
 }

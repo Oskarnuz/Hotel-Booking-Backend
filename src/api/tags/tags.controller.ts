@@ -54,7 +54,7 @@ export const deleteTagsController = async (
 ) => {
   try {
     const { id } = req.params;
-    const tags = await deletetags(id);
+    const tags = await deleteTags(id);
     res.json(tags);
   } catch(error: any) {
     res.status(500).json({ message: error.message })

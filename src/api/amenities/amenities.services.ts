@@ -25,8 +25,7 @@ export const updateAmenities = (id: string, input: any) => {
       id: id,
     },
     data: {
-      amenity1: input.amenity1,
-      amenity2: input.amenity2
+      name: input.name
     }
   })
 }

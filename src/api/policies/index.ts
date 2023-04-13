@@ -5,7 +5,7 @@ import {
   createPoliciesController,
   updatePoliciesController,
   deletePoliciesController
-} from './Policies.controller'
+} from './policies.controller'
 
 const router = Router()
 

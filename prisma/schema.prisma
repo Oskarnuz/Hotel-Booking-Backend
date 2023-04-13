@@ -21,8 +21,8 @@ model Product {
 }
 
 // Hotels and Rooms information
-model Hotel {
-  HotelId             String   @id @default(cuid())
+model Hotel {//Already
+  id                  String   @id @default(cuid())
   HotelName           String
   Website             String
   location            String
@@ -55,27 +55,26 @@ model Hotel {
   Rooms               String
 }
 
-model Tags {
+model Tags { //Already
   id                  String   @id @default(cuid())
   name                String
 }
 
-model Review {
+model Review { //Already
   id                  String   @id @default(cuid())
-  Rating              Decimal
-  User                String
-  Date                DateTime
-  HotelReview         String
+  rating              Int
+  user                String
+  date                DateTime
+  hotelReview         String
 }
 
-model Policies {
+model Policies { //Already
   id                  String   @id @default(cuid())
-  policy1             String
-  policy2             String
+  name                String
 }
 
-model Rooms {
-  room_id                     String    @id @default(cuid())
+model Rooms { //Already
+  id                          String    @id @default(cuid())
   Available                   Boolean
   RoomImg                     String
   RoomName                    String
@@ -85,19 +84,19 @@ model Rooms {
   Facility                    String
 }
 
-model Amenities {
+model Amenities { //Already
   id          String   @id @default(cuid())
   name        String //Bed, Instalations, etc.
 }
 
-model Inclusions {
+model Inclusions { //Already
   id            String   @id @default(cuid())
   name          String
   // Inclusion List
 }
 
 // Customers, Users and Administrator Information
-model customer{
+model customer{ //Already
   id               String   @id @default(cuid())
   firstName        String
   lastName         String
@@ -115,7 +114,7 @@ model customer{
 }
 
 model Payments {
-  PaymentsId                  String   @id @default(cuid())
+  id                String   @id @default(cuid())
   CardFirstName     String
   CardSecondName    String
   CardBankEntity    String
@@ -128,7 +127,7 @@ model Payments {
 }
 
 model Booking {
-  BookingId           String   @id @default(cuid())
+  id                  String   @id @default(cuid())
   HotelName           String
   RoomType            String
   DateOfStay          DateTime

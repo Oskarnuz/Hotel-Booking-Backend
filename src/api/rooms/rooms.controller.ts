@@ -15,13 +15,13 @@ export const getAllRoomsController = async(
   }
 }
 
-export const createroomController = async (
+export const createRoomController = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const room = await createroom(req.body)
+    const room = await createRoom(req.body)
     res.status(201).json({ message: 'room created', data: room })
   } catch(error: any) {
     res.status(500).json({ message: error.message })
@@ -48,14 +48,14 @@ export const getRoomByIdController = async (
 }
 
 
-export const updateroomController = async (
+export const updateRoomController = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const { id } = req.params
-    const room = await updateroom(id, req.body)
+    const room = await updateRoom(id, req.body)
 
     if(!room) {
       return res.status(404).json({ message: 'room not found' })
@@ -67,14 +67,14 @@ export const updateroomController = async (
   }
 }
 
-export const deleteroomController = async (
+export const deleteRoomController = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const { id } = req.params;
-    const room = await deleteroom(id);
+    const room = await deleteRoom(id);
     res.json(room);
   } catch(error: any) {
     res.status(500).json({ message: error.message })

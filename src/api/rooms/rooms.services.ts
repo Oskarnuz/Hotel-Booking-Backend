@@ -4,8 +4,8 @@ const prisma = new PrismaClient()
 
 export const getAllRooms = () => {
   return prisma.room.findMany({
-    select: 
-    room_id: true,
+    select: {
+    id: true,
     Available: true,
     RoomImg: true,
     RoomName: true,
@@ -15,6 +15,7 @@ export const getAllRooms = () => {
     Discount: true,
     About: true,
     Facility: true
+    }
   })
 }
 
@@ -40,7 +41,7 @@ export const getRoomById = (id: string) => {
       id: id
     },
     select: {
-      room_id: true,
+      id: true,
       Available: true,
       RoomImg: true,
       RoomName: true,

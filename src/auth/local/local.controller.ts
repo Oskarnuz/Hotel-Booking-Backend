@@ -15,7 +15,6 @@ export const signupController = async (
     const customer = await createCustomer({...req.body, password: encPassword})
 
     const token = signToken({ id: customer.id})
-    console.log("verify program")
 
     res.status(201).json({ message: 'Customer Created', data: { firstName, lastName, email }, token })
 

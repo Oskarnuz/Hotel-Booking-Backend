@@ -113,7 +113,7 @@ export const updateHotels = (id: string, input: any) => {
 }
 
 //Delete for administrator
-export function deleteHotels(ide: string) {
+export function deleteHotels(id: string) {
   return prisma.hotels.delete({
     where: {
       id: id,

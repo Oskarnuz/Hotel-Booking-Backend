@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import { getAllPolicies, createPolicies, updatePolicies, deletePolicies } from "./Policies.services";
+import { getAllPolicies, createPolicies, updatePolicies, deletePolicies } from "./policies.services";
 
 export const getAllPoliciesController = async (
   req: Request,

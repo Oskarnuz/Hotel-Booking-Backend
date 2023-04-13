@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import { getAllAmenities, createAmenities, updateAmenities, deleteAmenities } from "./Amenities.services";
+import { getAllAmenities, createAmenities, updateAmenities, deleteAmenities } from "./amenities.services";
 
 export const getAllAmenitiesController = async (
   req: Request,
@@ -55,7 +55,7 @@ export const deleteAmenitiesController = async (
   try {
     const { id } = req.params;
     const Amenities = await deleteAmenities(id);
-    res.json(Policies);
+    res.json(Amenities);
   } catch(error: any) {
     res.status(500).json({ message: error.message })
   }

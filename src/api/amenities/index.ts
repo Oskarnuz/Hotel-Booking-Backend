@@ -5,7 +5,7 @@ import {
   createAmenitiesController,
   updateAmenitiesController,
   deleteAmenitiesController
-} from './Amenities.controller'
+} from './amenities.controller'
 
 const router = Router()
 

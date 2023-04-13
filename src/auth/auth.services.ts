@@ -19,7 +19,7 @@ export const signToken = (payload: any) => {
     SECRET,
     { expiresIn: 60 * 60 * 24 }
   )
-console.log(token)
+
   return token
 }
 
