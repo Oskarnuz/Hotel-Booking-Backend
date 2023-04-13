@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import { getAllAmenities, createAmenities, updateAmenities, deleteAmenities } from "./amenities.services";
+import { getAllAmenities, createAmenities, updateAmenities, deleteAmenities, getAmenitiesById } from "./amenities.services";
 
 export const getAllAmenitiesController = async (
   req: Request,
@@ -10,6 +10,24 @@ export const getAllAmenitiesController = async (
   try {
     const Amenities = await getAllAmenities()
     res.status(200).json({ message: 'Amenities found', data: Amenities })
+  } catch(error: any) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
+export const getAmenitiesByIdController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params
+    const amenity = await getAmenitiesById(id)
+
+    if(!amenity) {
+      return res.status(404).json({ message: 'Amenity not found '})
+    }
+    res.status(201).json({ message: 'Amenity Found', data: amenity })
   } catch(error: any) {
     res.status(500).json({ message: error.message })
   }

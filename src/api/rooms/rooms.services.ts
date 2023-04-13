@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient()
 
 export const getAllRooms = () => {
-  return prisma.room.findMany({
+  return prisma.rooms.findMany({
     select: {
     id: true,
     Available: true,
@@ -20,7 +20,7 @@ export const getAllRooms = () => {
 }
 
 export const createRoom = (input: any) => {
-  return prisma.room.create({
+  return prisma.rooms.create({
     data: {
       Available: input.Available,
       RoomImg: input.RoomImg,
@@ -36,7 +36,7 @@ export const createRoom = (input: any) => {
 }
 
 export const getRoomById = (id: string) => {
-  return prisma.room.findUnique({
+  return prisma.rooms.findUnique({
     where: {
       id: id
     },
@@ -56,7 +56,7 @@ export const getRoomById = (id: string) => {
 }
 
 export const updateRoom = (id: string, input: any) => {
-  return prisma.room.update({
+  return prisma.rooms.update({
     where: {
       id: id
     },
@@ -75,7 +75,7 @@ export const updateRoom = (id: string, input: any) => {
 }
 
 export function deleteRoom(id:string) {
-  return prisma.room.delete({
+  return prisma.rooms.delete({
     where: {
       id: id,
     },

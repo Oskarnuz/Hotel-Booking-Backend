@@ -11,6 +11,18 @@ export const getAllInclusions = () => {
   })
 }
 
+export const getInclusionById = (id: string) => {
+  return prisma.inclusions.findUnique({
+    where: {
+      id: id
+    },
+    select: {
+      id: true,
+      name: true,
+    }
+  })
+}
+
 export const createInclusions = (input: any) => {
   return prisma.inclusions.create({
     data: {

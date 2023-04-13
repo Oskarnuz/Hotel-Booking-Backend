@@ -11,6 +11,18 @@ export const getAllAmenities = () => {
   })
 }
 
+export const getAmenitiesById = (id: string) => {
+  return prisma.amenities.findUnique({
+    where: {
+      id: id
+    },
+    select: {
+      id: true,
+      name: true,
+    }
+  })
+}
+
 export const createAmenities = (input: any) => {
   return prisma.amenities.create({
     data: {

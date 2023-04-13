@@ -4,7 +4,8 @@ import {
   getAllHotelsController,
   createHotelController,
   updateHotelsController,
-  deleteHotelsController
+  deleteHotelsController,
+  getHotelByIdController
 } from './hotels.controller'
 
 const router = Router()
@@ -16,5 +17,7 @@ router.post("/", createHotelController);
 router.put("/:id", updateHotelsController);
 
 router.delete("/:id", deleteHotelsController);
+
+router.get('/:id', getHotelByIdController)
 
 export default router

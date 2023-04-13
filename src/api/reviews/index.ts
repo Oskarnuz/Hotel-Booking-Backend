@@ -6,7 +6,7 @@ import {
   getAllReviewsController,
   getReviewByIdController,
   updateReviewController,
-} from "./review.controller";
+} from "./reviews.controller";
 
 const router = Router()
 

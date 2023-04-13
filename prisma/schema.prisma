@@ -60,7 +60,7 @@ model Tags { //Already
   name                String
 }
 
-model Review { //Already
+model Reviews { //Already
   id                  String   @id @default(cuid())
   rating              Int
   user                String
@@ -113,7 +113,7 @@ model customer{ //Already
   updatedAt        DateTime @updatedAt
 }
 
-model Payments {
+model Payments { //Already
   id                String   @id @default(cuid())
   CardFirstName     String
   CardSecondName    String
@@ -126,7 +126,7 @@ model Payments {
   Status            String // Validate type
 }
 
-model Booking {
+model Bookings {
   id                  String   @id @default(cuid())
   HotelName           String
   RoomType            String

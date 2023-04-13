@@ -4,9 +4,50 @@ const prisma = new PrismaClient()
 
 // Get
 export const getAllHotels = () => {
-  return prisma.hotels.findMany({
+  return prisma.hotel.findMany({
     select: {
-      HotelId:true,
+      id:true,
+      HotelName:true,
+      Website:true,
+      location:true,
+      category:true,
+      loc_Lat:true,
+      loc_Lng:true,
+      loc_Place:true,
+      loc_City:true,
+      loc_State:true,
+      loc_Country:true,
+      FrontImg:true,
+      Gallery:true,
+      PhoneNumber:true,
+      CountryCode:true,
+      Email:true,
+      HotelDescription:true,
+      StarRating:true,
+      ReviewNumber:true,
+      Tags:true,
+      SpecialTags:true,
+      PopularityNumber:true,
+      DateAdded:true,
+      TrendingNumber:true,
+      SN_Facebook:true,
+      SN_Twitter:true,
+      SN_Instagram:true,
+      SN_Pinterest:true,
+      Reviews:true,
+      Policies:true,
+      Rooms:true
+    }
+  })
+}
+
+export const getHotelById = (id: string) => {
+  return prisma.hotel.findUnique({
+    where: {
+      id: id
+    },
+    select: {
+      id:true,
       HotelName:true,
       Website:true,
       location:true,
@@ -43,7 +84,7 @@ export const getAllHotels = () => {
 
 //Post for administrator
 export const createHotel = (input: any) => {
-  return prisma.hotels.create({
+  return prisma.hotel.create({
     data: {
       HotelName: input.HotelName,
       Website: input.Website,
@@ -58,7 +99,7 @@ export const createHotel = (input: any) => {
       FrontImg: input.FrontImg, //Image
       Gallery: input.Gallery, // Images
       PhoneNumber: input.PhoneNumber,
-      CountryCode: parseInt(input.CountryCode),
+      CountryCode: input.CountryCode as string,
       Email: input.Email,
       HotelDescription: input.HotelDescription,
       Tags: input.Tags,
@@ -77,7 +118,7 @@ export const createHotel = (input: any) => {
 
 // Update for administrator
 export const updateHotels = (id: string, input: any) => {
-  return prisma.hotels.update({
+  return prisma.hotel.update({
     where: {
       id: id,
     },
@@ -95,7 +136,7 @@ export const updateHotels = (id: string, input: any) => {
       FrontImg: input.FrontImg, //Image
       Gallery: input.Gallery, // Images
       PhoneNumber: input.PhoneNumber,
-      CountryCode: parseInt(input.CountryCode),
+      CountryCode: input.CountryCode,
       Email: input.Email,
       HotelDescription: input.HotelDescription,
       Tags: input.Tags,
@@ -114,7 +155,7 @@ export const updateHotels = (id: string, input: any) => {
 
 //Delete for administrator
 export function deleteHotels(id: string) {
-  return prisma.hotels.delete({
+  return prisma.hotel.delete({
     where: {
       id: id,
     },

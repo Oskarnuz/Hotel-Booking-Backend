@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import { getAllHotels, createHotel, updateHotels, deleteHotels } from "./hotels.services";
+import { getAllHotels, createHotel, updateHotels, deleteHotels, getHotelById } from "./hotels.services";
 import { request } from "http";
 
 export const getAllHotelsController = async (
@@ -12,6 +12,24 @@ next: NextFunction
     const Hotels = await getAllHotels()
     res.status(200).json({ message: 'Hotels Found', data: Hotels })
   }catch(error: any) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
+export const getHotelByIdController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params
+    const hotel = await getHotelById(id)
+
+    if(!hotel) {
+      return res.status(404).json({ message: 'Hotel not found '})
+    }
+    res.status(201).json({ message: 'Hotel Found', data: hotel })
+  } catch(error: any) {
     res.status(500).json({ message: error.message })
   }
 }

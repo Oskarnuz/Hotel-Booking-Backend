@@ -4,7 +4,8 @@ import {
   getAllInclusionsController,
   createInclusionsController,
   updateInclusionsController,
-  deleteInclusionsController
+  deleteInclusionsController,
+  getInclusionByIdController
 } from './inclusions.controller'
 
 const router = Router()
@@ -17,5 +18,7 @@ router.post("/", createInclusionsController);
 router.patch("/:id", updateInclusionsController);
 
 router.delete("/:id", deleteInclusionsController);
+
+router.get('/:id', getInclusionByIdController)
 
 export default router
