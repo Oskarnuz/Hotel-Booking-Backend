@@ -4,9 +4,10 @@ const prisma = new PrismaClient()
 
 
 export const getAllReviews = () => {
-  return prisma.review.findMany({
+  return prisma.reviews.findMany({
     select: {
       id: true,
+      rating: true,
       user: true,
       date: true,
       hotelReview: true
@@ -15,7 +16,7 @@ export const getAllReviews = () => {
 }
 
 export const getReviewById = (id: string) => {
-  return prisma.review.findUnique({
+  return prisma.reviews.findUnique({
     where: {
       id: id,
     },
@@ -23,27 +24,24 @@ export const getReviewById = (id: string) => {
 }
 
 export const createReview = (input: any) => {
-  return prisma.review.create({
+  return prisma.reviews.create({
     data: {
       rating: Math.floor(input.rating),
       user: input.user,
       date: input.date,
       hotelReview: input.hotelReview,
-        connect:{
-          id: input.hotel.id
-        }
       }
     }
   )
 }
 
 export const updateReview = (id: string, input: any) => {
-  return prisma.review.update({
+  return prisma.reviews.update({
     where: {
       id: id,
     },
     data: {
-      rating: Math.floor(review.rating),
+      rating: input.rating,
       user: input.user,
       date: input.date,
       hotelReview: input.hotelReview
@@ -52,7 +50,7 @@ export const updateReview = (id: string, input: any) => {
 }
 
 export const deleteReview = (id: string) => {
-  return prisma.review.delete({
+  return prisma.reviews.delete({
     where: {
       id: id,
     },

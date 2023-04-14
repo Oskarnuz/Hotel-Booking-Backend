@@ -4,7 +4,7 @@ const prisma = new PrismaClient()
 
 // Get
 export const getAllHotels = () => {
-  return prisma.hotel.findMany({
+  return prisma.hotels.findMany({
     select: {
       id:true,
       HotelName:true,
@@ -42,7 +42,7 @@ export const getAllHotels = () => {
 }
 
 export const getHotelById = (id: string) => {
-  return prisma.hotel.findUnique({
+  return prisma.hotels.findUnique({
     where: {
       id: id
     },
@@ -82,9 +82,8 @@ export const getHotelById = (id: string) => {
   })
 }
 
-//Post for administrator
 export const createHotel = (input: any) => {
-  return prisma.hotel.create({
+  return prisma.hotels.create({
     data: {
       HotelName: input.HotelName,
       Website: input.Website,
@@ -96,29 +95,32 @@ export const createHotel = (input: any) => {
       loc_City: input.loc_City,
       loc_State: input.loc_State,
       loc_Country: input.loc_Country,
-      FrontImg: input.FrontImg, //Image
-      Gallery: input.Gallery, // Images
+      FrontImg: input.FrontImg, 
+      Gallery: input.Gallery, 
       PhoneNumber: input.PhoneNumber,
-      CountryCode: input.CountryCode as string,
+      CountryCode: input.CountryCode,
       Email: input.Email,
       HotelDescription: input.HotelDescription,
+      StarRating: input.StarRating,
+      ReviewNumber: input.ReviewNumber,
       Tags: input.Tags,
       SpecialTags: input.SpecialTags,
       PopularityNumber: input.PopularityNumber,
       DateAdded: input.DateAdded,
+      TrendingNumber: input.TrendingNumber,
       SN_Facebook: input.SN_Facebook,
       SN_Twitter: input.SN_Twitter,
       SN_Instagram: input.SN_Instagram,
       SN_Pinterest: input.SN_Pinterest,
+      Reviews: input.Reviews,
       Policies: input.Policies,
       Rooms: input.Rooms
     }
   })
 }
 
-// Update for administrator
 export const updateHotels = (id: string, input: any) => {
-  return prisma.hotel.update({
+  return prisma.hotels.update({
     where: {
       id: id,
     },
@@ -133,8 +135,8 @@ export const updateHotels = (id: string, input: any) => {
       loc_City: input.loc_City,
       loc_State: input.loc_State,
       loc_Country: input.loc_Country,
-      FrontImg: input.FrontImg, //Image
-      Gallery: input.Gallery, // Images
+      FrontImg: input.FrontImg, 
+      Gallery: input.Gallery, 
       PhoneNumber: input.PhoneNumber,
       CountryCode: input.CountryCode,
       Email: input.Email,
@@ -153,9 +155,8 @@ export const updateHotels = (id: string, input: any) => {
   })
 }
 
-//Delete for administrator
 export function deleteHotels(id: string) {
-  return prisma.hotel.delete({
+  return prisma.hotels.delete({
     where: {
       id: id,
     },

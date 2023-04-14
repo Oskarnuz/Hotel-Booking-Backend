@@ -12,9 +12,9 @@ export const getAllReviewsController = async (
   res: Response,
 ) => {
   try {
-    const reviews = await getAllReviews()
+    const review = await getAllReviews()
 
-    res.status(200).json({ message: 'Reviews found', data: reviews })
+    res.status(200).json({ message: 'Reviews found', data: review })
   } catch(error: any) {
     res.status(500).json({ message: error.message })
   }

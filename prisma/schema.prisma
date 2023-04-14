@@ -21,28 +21,28 @@ model Product {
 }
 
 // Hotels and Rooms information
-model Hotel {//Already
+model Hotels {//Already
   id                  String   @id @default(cuid())
   HotelName           String
   Website             String
   location            String
-  category            String //Review later
+  category            String 
   loc_Lat             String
   loc_Lng             String
   loc_Place           String
   loc_City            String
   loc_State           String
   loc_Country         String
-  FrontImg            String //image
-  Gallery             String //galery image
+  FrontImg            String 
+  Gallery             String 
   PhoneNumber         String
   CountryCode         String
   Email               String
   HotelDescription    String
   StarRating          Float
-  ReviewNumber        Int//String
-  Tags                String // ["Bar", "breakfast"],
-  SpecialTags         String // "Recommended",
+  ReviewNumber        Int
+  Tags                String
+  SpecialTags         String 
   PopularityNumber    Int
   DateAdded           DateTime
   TrendingNumber      Int

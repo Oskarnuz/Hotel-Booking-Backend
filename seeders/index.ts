@@ -1,10 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import seedRoom from "./roomSeeder";
 import seedProduct from "./productSeeder";
+import seedReview from "./reviewSeeder";
 
 const prisma = new PrismaClient()
 
-const seeders = [ seedProduct, seedRoom ]
+const seeders = [ seedProduct, seedRoom, seedReview ]
 
 const seed = async() => {
   for(const seeder of seeders) {
