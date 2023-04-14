@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { verifyToken } from "../../auth/auth.services";
-import { AuthCustomer } from "../../auth/auth.types";
+import { AuthUser } from "../../auth/auth.types";
 
-export const auth = (req: AuthCustomer, res: Response, next: NextFunction) => {
+export const auth = (req: AuthUser, res: Response, next: NextFunction) => {
   try {
     const { authorization } = req.headers
 
@@ -18,7 +18,7 @@ export const auth = (req: AuthCustomer, res: Response, next: NextFunction) => {
 
     const { id } = verifyToken(token) as { id: string  }
 
-    req.customer = id
+    req.user = id
 
     next() 
   } catch(error: any) {

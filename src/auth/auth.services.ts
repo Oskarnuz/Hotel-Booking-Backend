@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
 import jwt from 'jsonwebtoken'
 
 const prisma = new PrismaClient()
 const SECRET = process.env.SECRET_KEY as string
 
 export const login = (email: string) => {
-  return prisma.customer.findUnique({
+  return prisma.users.findUnique({
     where: {
       email: email
       

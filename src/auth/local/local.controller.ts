@@ -1,4 +1,4 @@
-import { createCustomer } from "../../api/customer/customer.services";
+import { createUser } from "../../api/users/users.services";
 import { Request, Response } from "express";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
@@ -12,11 +12,11 @@ export const signupController = async (
   try {
     const { firstName, lastName, email } = req.body
     const encPassword = await bcrypt.hash(req.body.password, 10)
-    const customer = await createCustomer({...req.body, password: encPassword})
+    const user = await createUser({...req.body, password: encPassword})
 
-    const token = signToken({ id: customer.id})
+    const token = signToken({ id: user.id})
 
-    res.status(201).json({ message: 'Customer Created', data: { firstName, lastName, email }, token })
+    res.status(201).json({ message: 'User Created', data: { firstName, lastName, email }, token })
 
   } catch(error: any) {
     res.status(500).json({ message: error.message })
@@ -30,23 +30,23 @@ export const loginController = async(
   try {
     const { email, password } = req.body
 
-    const customer = await login(email)
+    const user = await login(email)
 
-    if(!customer) {
+    if(!user) {
       throw new Error('Invalid email or password')
     }
 
-    const isValid = await bcrypt.compare(password, customer.password)
+    const isValid = await bcrypt.compare(password, user.password)
 
     if(!isValid) {
       throw new Error('Invalid email or password')
     }
 
-    const { id, firstName, lastName } = customer
+    const { id, firstName, lastName } = user
 
-    const token = signToken({ id: customer.id })
+    const token = signToken({ id: user.id })
 
-    res.status(201).json({ message: 'Customer login successfully', data: { email, firstName, lastName }, token })
+    res.status(201).json({ message: 'User login successfully', data: { email, firstName, lastName }, token })
 
   } catch(error: any) {
     res.status(500).json({ message: error.message})

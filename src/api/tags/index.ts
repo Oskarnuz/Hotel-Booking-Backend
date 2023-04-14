@@ -4,7 +4,8 @@ import {
   getAllTagsController,
   createTagsController,
   updateTagsController,
-  deleteTagsController
+  deleteTagsController,
+  getTagByIdController
 } from './tags.controller'
 
 const router = Router()
@@ -17,5 +18,7 @@ router.post("/", createTagsController);
 router.patch("/:id", updateTagsController);
 
 router.delete("/:id", deleteTagsController);
+
+router.get("/:id", getTagByIdController)
 
 export default router

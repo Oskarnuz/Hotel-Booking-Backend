@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import { getAllTags, createTags, updateTags, deleteTags } from "./tags.services";
+import { getAllTags, createTags, updateTags, deleteTags, getTagById } from "./tags.services";
 
 export const getAllTagsController = async (
   req: Request,
@@ -10,6 +10,25 @@ export const getAllTagsController = async (
   try {
     const tags = await getAllTags()
     res.status(200).json({ message: 'Tags found', data: tags })
+  } catch(error: any) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
+export const getTagByIdController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params
+    const tag = await getTagById(id)
+
+    if(!tag) {
+      return res.status(404).json({ message: 'Tag not found' })
+    }
+
+    res.status(201).json({ message: 'Tag found', data: tag })
   } catch(error: any) {
     res.status(500).json({ message: error.message })
   }

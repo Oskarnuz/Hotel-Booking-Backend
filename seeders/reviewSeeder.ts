@@ -7,7 +7,7 @@ const seedReview = async (prisma: PrismaClient): Promise<void> => {
   const review_arr = []
   for(let i = 0; i < 5; i++) {
     const review = {
-      rating: Math.floor(Math.random()* (5 - 1) + 1),
+      rating: Math.floor(Math.random()* (5 - 2) + 2),
       user: faker.internet.userName(),
       date: faker.date.past(1),
       hotelReview: faker.lorem.paragraphs(3),

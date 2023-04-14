@@ -3,8 +3,8 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 
 // CRUD 
-export const getAllCustomers = () => {
-  return prisma.customer.findMany({
+export const getAllUsers = () => {
+  return prisma.users.findMany({
     select: {
       id: true,
       firstName: true,
@@ -18,6 +18,7 @@ export const getAllCustomers = () => {
       phoneNumber: true,
       password: true,
       bookings: true,
+      role: true,
       createdAt: true,
       updatedAt: true
     }
@@ -26,8 +27,8 @@ export const getAllCustomers = () => {
 
 // Create
 
-export const createCustomer = (input: any) => {
-  return prisma.customer.create({
+export const createUser = (input: any) => {
+  return prisma.users.create({
     data: {
       firstName: input.firstName,
       lastName: input.lastName,
@@ -39,14 +40,15 @@ export const createCustomer = (input: any) => {
       email: input.email,
       phoneNumber: input.phoneNumber,
       password: input.password,
-      bookings: input.bookings
+      bookings: input.bookings,
+      role: input.role
     }
     
   })
 }
 
-export const getCustomerById = (id: string) => {
-  return prisma.customer.findUnique({
+export const getUserById = (id: string) => {
+  return prisma.users.findUnique({
     where: {
       id: id
     },
@@ -64,14 +66,15 @@ export const getCustomerById = (id: string) => {
       password: true,
       bookings: true,
       createdAt: true,
-      updatedAt: true
+      updatedAt: true,
+      role: true
     }
   
   })
 }
 
-export const updateCustomer = (id: string, input: any) => {
-  return prisma.customer.update({
+export const updateUser = (id: string, input: any) => {
+  return prisma.users.update({
     where: {
       id: id,
     },
@@ -86,13 +89,14 @@ export const updateCustomer = (id: string, input: any) => {
       email: input.email,
       phoneNumber: input.phoneNumber,
       password: input.password,
-      bookings: input.bookings
+      bookings: input.bookings,
+      role: input.role
     }
   })
 }
 
-export const deleteCustomer = (id: string) => {
-  return prisma.customer.delete({
+export const deleteUser = (id: string) => {
+  return prisma.users.delete({
     where: {
       id: id,
     },

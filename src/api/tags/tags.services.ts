@@ -11,6 +11,18 @@ export const getAllTags = () => {
   })
 }
 
+export const getTagById = (id: string) => {
+  return prisma.tags.findUnique({
+    where: {
+      id: id
+    },
+    select: {
+      id: true,
+      name: true
+    }
+  })
+}
+
 export const createTags = (input: any) => {
   return prisma.tags.create({
     data: {
