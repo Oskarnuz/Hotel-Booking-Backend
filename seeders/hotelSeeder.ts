@@ -32,6 +32,12 @@ const seedHotel = async (prisma: PrismaClient): Promise<void> => {
       }.jpeg`,             
       Gallery: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Hotels/hotel${
         Math.floor(Math.random() * 49) + 1
+      }.jpeg-//-https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Hotels/hotel${
+        Math.floor(Math.random() * 49) + 1
+      }.jpeg-//-https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Hotels/hotel${
+        Math.floor(Math.random() * 49) + 1
+      }.jpeg-//-https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Hotels/hotel${
+        Math.floor(Math.random() * 49) + 1
       }.jpeg`,           
       PhoneNumber: `${Math.floor(Math.random() * 300) + 500} ${
         Math.floor(Math.random() * 800) + 100
@@ -50,11 +56,17 @@ const seedHotel = async (prisma: PrismaClient): Promise<void> => {
       HotelDescription: faker.lorem.paragraph(5),
       StarRating: Math.floor(Math.random()* (5 - 2) + 2),         
       ReviewNumber: faker.datatype.number(10000),       
-      Tags: faker.lorem.word(),             
-      SpecialTags: "none",          
-      PopularityNumber: faker.datatype.number(50),
-      DateAdded: faker.date.recent(10),   
-      TrendingNumber: faker.datatype.number(30),      
+      Tags: "{...}",             
+      SpecialTags: `${
+        Math.floor(Math.random() * 10) === 1
+          ? "Certified"
+          : Math.floor(Math.random() * 10) === 2
+          ? "Recommended"
+          : "NoTag"
+      }`,          
+      PopularityNumber: faker.datatype.number(100),
+      DateAdded: faker.date.recent(1000),   
+      TrendingNumber: faker.datatype.number(100),      
       SN_Facebook: `https://www.facebook.com/${companyName
       .split(" ")
       .join("")

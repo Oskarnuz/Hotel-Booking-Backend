@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 
 const seedReview = async (prisma: PrismaClient): Promise<void> => {
   const review_arr = []
-  for(let i = 0; i < 5; i++) {
+  for(let i = 0; i < 10; i++) {
     const review = {
       rating: Math.floor(Math.random()* (5 - 2) + 2),
       user: faker.internet.userName(),

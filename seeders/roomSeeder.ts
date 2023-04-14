@@ -11,7 +11,7 @@ const seedRoom = async (prisma: PrismaClient): Promise<void> => {
       RoomImg: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Rooms/room${
       Math.floor(Math.random() * 114) + 1
           }.jpeg`,
-      RoomName: faker.company.name(),//"Deluxe Room with Queen Bed",
+      RoomName: faker.company.name(),
       OriginalPricePerNight: Math.floor(Math.random() * 1000) + 200,
       Discount: Math.floor(Math.random() * 20) + 10,
       About: faker.lorem.paragraph(),
