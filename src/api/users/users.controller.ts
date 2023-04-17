@@ -45,7 +45,6 @@ export const getUserByIdController = async (
   } catch(error: any) {
     res.status(500).json({ message: error.message })
   }
-  
 }
 
 export const updateUserController = async (

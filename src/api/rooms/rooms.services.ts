@@ -12,7 +12,9 @@ export const getAllRooms = () => {
     OriginalPricePerNight: true,
     Discount: true,
     About: true,
-    Facility: true
+    Facility: true,
+    Amenities: true,
+    Inclusions: true
     }
   })
 }
@@ -26,7 +28,9 @@ export const createRoom = (input: any) => {
       OriginalPricePerNight: input.OriginalPricePerNight,
       Discount: input.Discount,
       About: input.About,
-      Facility: input.Facility
+      Facility: input.Facility,
+      Amenities: input.Amenities,
+      Inclusions: input.Inclusions
     }
   })
 }
@@ -44,7 +48,9 @@ export const getRoomById = (id: string) => {
       OriginalPricePerNight: true,
       Discount: true,
       About: true,
-      Facility: true
+      Facility: true,
+      Amenities: true,
+      Inclusions: true
     }
   })
 }
@@ -61,7 +67,9 @@ export const updateRoom = (id: string, input: any) => {
       OriginalPricePerNight: input.OriginalPricePerNight,
       Discount: input.Discount,
       About: input.About,
-      Facility: input.Facility
+      Facility: input.Facility,
+      Amenities: input.Amenities,
+      Inclusions: input.Inclusions
     }
   })
 }

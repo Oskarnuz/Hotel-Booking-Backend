@@ -8,131 +8,149 @@ datasource db {
 }
 
 model Product {
-  id                  String   @id @default(cuid())
-  name                String
-  description         String
-  price               Int
-  reviews             String
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Int
+  reviews     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
-
 
 model Hotels {
-  id                  String   @id @default(cuid())
-  HotelName           String
-  Website             String
-  location            String
-  category            String 
-  loc_Lat             String
-  loc_Lng             String
-  loc_Place           String
-  loc_City            String
-  loc_State           String
-  loc_Country         String
-  FrontImg            String 
-  Gallery             String 
-  PhoneNumber         String
-  CountryCode         String
-  Email               String
-  HotelDescription    String
-  StarRating          Float
-  ReviewNumber        Int
-  Tags                String
-  SpecialTags         String 
-  PopularityNumber    Int
-  DateAdded           DateTime
-  TrendingNumber      Int
-  SN_Facebook         String
-  SN_Twitter          String
-  SN_Instagram        String
-  SN_Pinterest        String
-  Reviews             String
-  Policies            String
-  Rooms               String
+  id               String     @id @default(cuid())
+  HotelName        String
+  Website          String
+  location         String
+  category         String
+  loc_Lat          String
+  loc_Lng          String
+  loc_Place        String
+  loc_City         String
+  loc_State        String
+  loc_Country      String
+  FrontImg         String
+  Gallery          String
+  PhoneNumber      String
+  CountryCode      String
+  Email            String
+  HotelDescription String
+  StarRating       Float
+  ReviewNumber     Int
+  Tags             Tags[]
+  SpecialTags      String
+  PopularityNumber Int
+  DateAdded        DateTime
+  TrendingNumber   Int
+  SN_Facebook      String
+  SN_Twitter       String
+  SN_Instagram     String
+  SN_Pinterest     String
+  Reviews          Reviews[]
+  Policies         Policies[]
+  Rooms            Rooms[]
 }
 
-model Tags { 
-  id                  String   @id @default(cuid())
-  name                String
+model Tags {
+  id       String  @id @default(cuid())
+  name     String
+  Hotels   Hotels? @relation(fields: [hotelsId], references: [id])
+  hotelsId String?
 }
 
-model Reviews { 
-  id                  String   @id @default(cuid())
-  rating              Int
-  user                String
-  date                DateTime
-  hotelReview         String
-}
-
-model Policies { 
-  id                  String   @id @default(cuid())
-  name                String
-}
-
-model Rooms { 
-  id                          String    @id @default(cuid())
-  Available                   Boolean
-  RoomImg                     String
-  RoomName                    String
-  OriginalPricePerNight       Int
-  Discount                    Int
-  About                       String
-  Facility                    String
-}
-
-model Amenities { 
+model Reviews {
   id          String   @id @default(cuid())
-  name        String 
+  rating      Int
+  user        String
+  date        DateTime
+  hotelReview String
+  Hotels      Hotels?  @relation(fields: [hotelsId], references: [id])
+  hotelsId    String?
 }
 
-model Inclusions { 
-  id            String   @id @default(cuid())
-  name          String
+model Policies {
+  id       String  @id @default(cuid())
+  name     String
+  Hotels   Hotels? @relation(fields: [hotelsId], references: [id])
+  hotelsId String?
 }
 
-
-model Users { 
-  id               String   @id @default(cuid())
-  firstName        String
-  lastName         String
-  gender           String
-  streetAddress    String
-  city             String
-  state            String
-  zipCode          String
-  email            String   @unique
-  phoneNumber      String
-  password         String
-  bookings         String 
-  role             String
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+model Rooms {
+  id                    String       @id @default(cuid())
+  Available             Boolean
+  RoomImg               String
+  RoomName              String
+  OriginalPricePerNight Int
+  Discount              Int
+  About                 String
+  Facility              String
+  Amenities             Amenities[]
+  Inclusions            Inclusions[]
+  Hotels                Hotels?      @relation(fields: [hotelsId], references: [id])
+  hotelsId              String?
 }
 
-model Payments { 
-  id                String   @id @default(cuid())
-  CardFirstName     String
-  CardSecondName    String
-  CardBankEntity    String
-  CardNumber        String
-  CardType          String
-  CardYear          String
-  CardMonth         String
-  CardCcv           String
-  Status            String 
+model Amenities {
+  id      String  @id @default(cuid())
+  name    String
+  Rooms   Rooms?  @relation(fields: [roomsId], references: [id])
+  roomsId String?
+}
+
+model Inclusions {
+  id      String  @id @default(cuid())
+  name    String
+  Rooms   Rooms?  @relation(fields: [roomsId], references: [id])
+  roomsId String?
+}
+
+model Users {
+  id            String     @id @default(cuid())
+  firstName     String
+  lastName      String
+  gender        String
+  streetAddress String
+  city          String
+  state         String
+  zipCode       String
+  email         String     @unique
+  phoneNumber   String
+  password      String
+  bookings      Bookings[]
+  role          Roles[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Payments {
+  id             String    @id @default(cuid())
+  CardFirstName  String
+  CardSecondName String
+  CardBankEntity String
+  CardNumber     String
+  CardType       String
+  CardYear       String
+  CardMonth      String
+  CardCcv        String
+  Status         String
+  Bookings       Bookings? @relation(fields: [bookingsId], references: [id])
+  bookingsId     String?
 }
 
 model Bookings {
-  id                  String   @id @default(cuid())
-  HotelName           String
-  RoomType            String
-  DateOfStay          DateTime
-  NumberOfGuest       String
+  id            String     @id @default(cuid())
+  HotelName     String
+  RoomType      String
+  DateOfStay    DateTime
+  NumberOfGuest String
+  Payments      Payments[]
+  Users         Users?     @relation(fields: [usersId], references: [id])
+  usersId       String?
 }
 
 model Roles {
-  id                String   @id @default(cuid())
-  Name              String
+  id      String  @id @default(cuid())
+  Name    String
+  Users   Users?  @relation(fields: [usersId], references: [id])
+  usersId String?
 }
-

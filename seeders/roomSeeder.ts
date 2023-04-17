@@ -15,7 +15,9 @@ const seedRoom = async (prisma: PrismaClient): Promise<void> => {
       OriginalPricePerNight: Math.floor(Math.random() * 1000) + 200,
       Discount: Math.floor(Math.random() * 20) + 10,
       About: faker.lorem.paragraph(),
-      Facility: `Floors ${Math.floor(Math.random() * 60)} - ${Math.floor(Math.random() * 20) + 60}`
+      Facility: `Floors ${Math.floor(Math.random() * 60)} - ${Math.floor(Math.random() * 20) + 60}`,
+      Amenities: "Amenities",
+      Inclusions: "Inclusions"
     }
 
     rooms_arr.push(room)
