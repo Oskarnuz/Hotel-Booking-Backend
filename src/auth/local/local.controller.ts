@@ -10,13 +10,13 @@ export const signupController = async (
   res: Response
 ) => {
   try {
-    const { firstName, lastName, email } = req.body
+    const { fullName, email } = req.body
     const encPassword = await bcrypt.hash(req.body.password, 10)
     const user = await createUser({...req.body, password: encPassword})
 
     const token = signToken({ id: user.id})
 
-    res.status(201).json({ message: 'User Created', data: { firstName, lastName, email }, token })
+    res.status(201).json({ message: 'User Created', data: { fullName, email }, token })
 
   } catch(error: any) {
     res.status(500).json({ message: error.message })
@@ -42,11 +42,11 @@ export const loginController = async(
       throw new Error('Invalid email or password')
     }
 
-    const { id, firstName, lastName } = user
+    const { id, fullName } = user
 
     const token = signToken({ id: user.id })
 
-    res.status(201).json({ message: 'User login successfully', data: { email, firstName, lastName }, token })
+    res.status(201).json({ message: 'User login successfully', data: { email, fullName }, token })
 
   } catch(error: any) {
     res.status(500).json({ message: error.message})

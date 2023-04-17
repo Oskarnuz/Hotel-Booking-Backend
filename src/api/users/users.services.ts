@@ -7,8 +7,7 @@ export const getAllUsers = () => {
   return prisma.users.findMany({
     select: {
       id: true,
-      firstName: true,
-      lastName: true,
+      fullName: true,
       gender: true,
       streetAddress: true,
       city: true,
@@ -19,6 +18,7 @@ export const getAllUsers = () => {
       password: true,
       bookings: true,
       role: true,
+      picture: true,
       createdAt: true,
       updatedAt: true
     }
@@ -30,18 +30,18 @@ export const getAllUsers = () => {
 export const createUser = (input: any) => {
   return prisma.users.create({
     data: {
-      firstName: input.firstName,
-      lastName: input.lastName,
-      gender: input.gender,
-      streetAddress: input.streetAddress,
-      city: input.city,
-      state: input.state,
-      zipCode: input.zipCode,
+      fullName: input.fullName,
+      gender: "",
+      streetAddress: "",
+      city: "",
+      state: "",
+      zipCode: "",
       email: input.email,
-      phoneNumber: input.phoneNumber,
+      phoneNumber: "",
       password: input.password,
-      bookings: input.bookings,
-      role: input.role
+      bookings: input.bookins,
+      role: input.role,
+      picture: "",
     }
     
   })
@@ -54,8 +54,7 @@ export const getUserById = (id: string) => {
     },
     select: {
       id: true,
-      firstName: true,
-      lastName: true,
+      fullName: true,
       gender: true,
       streetAddress: true,
       city: true,
@@ -65,9 +64,10 @@ export const getUserById = (id: string) => {
       phoneNumber: true,
       password: true,
       bookings: true,
+      role: true,
+      picture: true,
       createdAt: true,
       updatedAt: true,
-      role: true
     }
   
   })
@@ -79,8 +79,7 @@ export const updateUser = (id: string, input: any) => {
       id: id,
     },
     data: {
-      firstName: input.firstName,
-      lastName: input.lastName,
+      fullName: input.fullName,
       gender: input.gender,
       streetAddress: input.streetAddress,
       city: input.city,
@@ -90,7 +89,8 @@ export const updateUser = (id: string, input: any) => {
       phoneNumber: input.phoneNumber,
       password: input.password,
       bookings: input.bookings,
-      role: input.role
+      role: input.role,
+      picture: input.picture,
     }
   })
 }

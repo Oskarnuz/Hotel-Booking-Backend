@@ -106,18 +106,18 @@ model Inclusions {
 
 model Users {
   id            String     @id @default(cuid())
-  firstName     String
-  lastName      String
-  gender        String
-  streetAddress String
-  city          String
-  state         String
-  zipCode       String
+  fullName      String
+  gender        String?
+  streetAddress String?
+  city          String?
+  state         String?
+  zipCode       String?
   email         String     @unique
-  phoneNumber   String
+  phoneNumber   String?
   password      String
   bookings      Bookings[]
   role          Roles[]
+  picture       String?
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
 }
