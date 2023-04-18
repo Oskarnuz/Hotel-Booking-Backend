@@ -7,16 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
-  id          String   @id @default(cuid())
-  name        String
-  description String
-  price       Int
-  reviews     String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
 model Hotels {
   id               String     @id @default(cuid())
   HotelName        String
@@ -52,14 +42,14 @@ model Hotels {
 }
 
 model Tags {
-  id       String  @id @default(cuid())
+  id       Int  @id @default(autoincrement())
   name     String
   Hotels   Hotels? @relation(fields: [hotelsId], references: [id])
   hotelsId String?
 }
 
 model Reviews {
-  id          String   @id @default(cuid())
+  id          Int  @id @default(autoincrement())
   rating      Int
   user        String
   date        DateTime
@@ -69,7 +59,7 @@ model Reviews {
 }
 
 model Policies {
-  id       String  @id @default(cuid())
+  id       Int  @id @default(autoincrement())
   name     String
   Hotels   Hotels? @relation(fields: [hotelsId], references: [id])
   hotelsId String?
@@ -91,14 +81,14 @@ model Rooms {
 }
 
 model Amenities {
-  id      String  @id @default(cuid())
+  id      Int  @id @default(autoincrement())
   name    String
   Rooms   Rooms?  @relation(fields: [roomsId], references: [id])
   roomsId String?
 }
 
 model Inclusions {
-  id      String  @id @default(cuid())
+  id      Int  @id @default(autoincrement())
   name    String
   Rooms   Rooms?  @relation(fields: [roomsId], references: [id])
   roomsId String?
@@ -153,4 +143,9 @@ model Roles {
   Name    String
   Users   Users?  @relation(fields: [usersId], references: [id])
   usersId String?
+}
+
+model EmailSubcribers {
+  id      Int  @id @default(autoincrement())
+  Email   String
 }
