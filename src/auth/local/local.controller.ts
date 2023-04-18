@@ -46,7 +46,7 @@ export const loginController = async(
 
     const token = signToken({ id: user.id })
 
-    res.status(201).json({ message: 'User login successfully', data: { email, fullName }, token })
+    res.status(201).json({ message: 'User login successfully', data: { email, fullName, id }, token })
 
   } catch(error: any) {
     res.status(500).json({ message: error.message})

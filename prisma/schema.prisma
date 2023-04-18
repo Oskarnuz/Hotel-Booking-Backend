@@ -144,8 +144,8 @@ model Bookings {
   DateOfStay    DateTime
   NumberOfGuest String
   Payments      Payments[]
-  Users         Users?     @relation(fields: [usersId], references: [id])
-  usersId       String?
+  Owner         Users?     @relation(fields: [OwnerId], references: [id])
+  OwnerId       String?
 }
 
 model Roles {
