@@ -11,7 +11,7 @@ export const getAllAmenities = () => {
   })
 }
 
-export const getAmenitiesById = (id: string) => {
+export const getAmenitiesById = (id: number) => {
   return prisma.amenities.findUnique({
     where: {
       id: id
@@ -31,7 +31,7 @@ export const createAmenities = (input: any) => {
   })
 }
 
-export const updateAmenities = (id: string, input: any) => {
+export const updateAmenities = (id: number, input: any) => {
   return prisma.amenities.update({
     where: {
       id: id,
@@ -42,7 +42,7 @@ export const updateAmenities = (id: string, input: any) => {
   })
 }
 
-export function deleteAmenities(id: string) {
+export function deleteAmenities(id: number) {
   return prisma.amenities.delete({
     where: {
       id: id,

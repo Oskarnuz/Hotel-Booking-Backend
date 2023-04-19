@@ -22,7 +22,7 @@ export const getAmenitiesByIdController = async (
 ) => {
   try {
     const { id } = req.params
-    const amenity = await getAmenitiesById(id)
+    const amenity = await getAmenitiesById(Number(id))
 
     if(!amenity) {
       return res.status(404).json({ message: 'Amenity not found '})
@@ -53,7 +53,7 @@ export const updateAmenitiesController = async (
 ) => {
   try {
     const { id } = req.params
-    const Amenities = await updateAmenities(id, req.body)
+    const Amenities = await updateAmenities(Number(id), req.body)
 
     if(!Amenities) {
       return res.status(404).json({ message: 'Amenities not found' })
@@ -72,7 +72,7 @@ export const deleteAmenitiesController = async (
 ) => {
   try {
     const { id } = req.params;
-    const Amenities = await deleteAmenities(id);
+    const Amenities = await deleteAmenities(Number(id));
     res.json(Amenities);
   } catch(error: any) {
     res.status(500).json({ message: error.message })

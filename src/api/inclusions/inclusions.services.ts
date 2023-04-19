@@ -11,7 +11,7 @@ export const getAllInclusions = () => {
   })
 }
 
-export const getInclusionById = (id: string) => {
+export const getInclusionById = (id: number) => {
   return prisma.inclusions.findUnique({
     where: {
       id: id
@@ -31,7 +31,7 @@ export const createInclusions = (input: any) => {
   })
 }
 
-export const updateInclusions = (id: string, input: any) => {
+export const updateInclusions = (id: number, input: any) => {
   return prisma.inclusions.update({
     where: {
       id: id,
@@ -42,7 +42,7 @@ export const updateInclusions = (id: string, input: any) => {
   })
 }
 
-export function deleteInclusions(id: string) {
+export function deleteInclusions(id: number) {
   return prisma.inclusions.delete({
     where: {
       id: id,

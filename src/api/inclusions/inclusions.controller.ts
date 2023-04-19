@@ -22,7 +22,7 @@ export const getInclusionByIdController = async (
 ) => {
   try {
     const { id } = req.params
-    const inclusion = await getInclusionById(id)
+    const inclusion = await getInclusionById(Number(id))
 
     if(!inclusion) {
       return res.status(404).json({ message: 'Inclusion not found '})
@@ -53,7 +53,7 @@ export const updateInclusionsController = async (
 ) => {
   try {
     const { id } = req.params
-    const inclusions = await updateInclusions(id, req.body)
+    const inclusions = await updateInclusions(Number(id), req.body)
 
     if(!inclusions) {
       return res.status(404).json({ message: 'Inclusions not found' })
@@ -72,7 +72,7 @@ export const deleteInclusionsController = async (
 ) => {
   try {
     const { id } = req.params;
-    const inclusions = await deleteInclusions(id);
+    const inclusions = await deleteInclusions(Number(id));
     res.json(inclusions);
   } catch(error: any) {
     res.status(500).json({ message: error.message })

@@ -35,7 +35,7 @@ export const updatePoliciesController = async (
 ) => {
   try {
     const { id } = req.params
-    const Policies = await updatePolicies(id, req.body)
+    const Policies = await updatePolicies(Number(id), req.body)
 
     if(!Policies) {
       return res.status(404).json({ message: 'Policies not found' })
@@ -54,7 +54,7 @@ export const deletePoliciesController = async (
 ) => {
   try {
     const { id } = req.params;
-    const Policies = await deletePolicies(id);
+    const Policies = await deletePolicies(Number(id));
     res.json(Policies);
   } catch(error: any) {
     res.status(500).json({ message: error.message })

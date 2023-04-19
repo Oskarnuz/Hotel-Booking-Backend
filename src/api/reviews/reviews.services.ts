@@ -15,7 +15,7 @@ export const getAllReviews = () => {
   })
 }
 
-export const getReviewById = (id: string) => {
+export const getReviewById = (id: number) => {
   return prisma.reviews.findUnique({
     where: {
       id: id,
@@ -35,7 +35,7 @@ export const createReview = (input: any) => {
   )
 }
 
-export const updateReview = (id: string, input: any) => {
+export const updateReview = (id: number, input: any) => {
   return prisma.reviews.update({
     where: {
       id: id,
@@ -49,7 +49,7 @@ export const updateReview = (id: string, input: any) => {
   });
 }
 
-export const deleteReview = (id: string) => {
+export const deleteReview = (id: number) => {
   return prisma.reviews.delete({
     where: {
       id: id,

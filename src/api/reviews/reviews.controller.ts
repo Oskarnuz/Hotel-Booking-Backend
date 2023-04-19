@@ -26,7 +26,7 @@ export const getReviewByIdController = async(
 ) => {
   try {
     const { id } = req.params;
-    const review = await getReviewById(id);
+    const review = await getReviewById(Number(id));
     res.status(200).json({ message: 'Review found', data: review })
   } catch(error: any) {
     res.status(500).json({ message: error.message })
@@ -53,7 +53,7 @@ export const updateReviewController = async (
 ) => {
   try {
     const { id } = req.params;
-    const review = await updateReview(id, req.body);
+    const review = await updateReview(Number(id), req.body);
     res.status(200).json({ message: 'Review updated', data: review })
   } catch(error: any) {
     res.status(500).json({ message: error.message })
@@ -66,7 +66,7 @@ export const deleteReviewController = async (
 ) => {
   try {
     const { id } = req.params;
-    const review = await deleteReview(id);
+    const review = await deleteReview(Number(id));
     res.status(200).json({ message: 'Review deleted', data: review })
   } catch(error: any) {
     res.status(500).json({ message: error.message })

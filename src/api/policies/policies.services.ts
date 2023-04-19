@@ -19,7 +19,7 @@ export const createPolicies = (input: any) => {
   })
 }
 
-export const updatePolicies = (id: string, input: any) => {
+export const updatePolicies = (id: number, input: any) => {
   return prisma.policies.update({
     where: {
       id: id,
@@ -30,7 +30,7 @@ export const updatePolicies = (id: string, input: any) => {
   })
 }
 
-export function deletePolicies(id: string) {
+export function deletePolicies(id: number) {
   return prisma.policies.delete({
     where: {
       id: id,

@@ -22,7 +22,7 @@ export const getTagByIdController = async (
 ) => {
   try {
     const { id } = req.params
-    const tag = await getTagById(id)
+    const tag = await getTagById(Number(id))
 
     if(!tag) {
       return res.status(404).json({ message: 'Tag not found' })
@@ -54,7 +54,7 @@ export const updateTagsController = async (
 ) => {
   try {
     const { id } = req.params
-    const tags = await updateTags(id, req.body)
+    const tags = await updateTags(Number(id), req.body)
 
     if(!tags) {
       return res.status(404).json({ message: 'Tags not found' })
@@ -73,7 +73,7 @@ export const deleteTagsController = async (
 ) => {
   try {
     const { id } = req.params;
-    const tags = await deleteTags(id);
+    const tags = await deleteTags(Number(id));
     res.json(tags);
   } catch(error: any) {
     res.status(500).json({ message: error.message })

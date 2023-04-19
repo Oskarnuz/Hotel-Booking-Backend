@@ -11,7 +11,7 @@ export const getAllTags = () => {
   })
 }
 
-export const getTagById = (id: string) => {
+export const getTagById = (id: number) => {
   return prisma.tags.findUnique({
     where: {
       id: id
@@ -31,7 +31,7 @@ export const createTags = (input: any) => {
   })
 }
 
-export const updateTags = (id: string, input: any) => {
+export const updateTags = (id: number, input: any) => {
   return prisma.tags.update({
     where: {
       id: id,
@@ -42,7 +42,7 @@ export const updateTags = (id: string, input: any) => {
   })
 }
 
-export function deleteTags(id: string) {
+export function deleteTags(id: number) {
   return prisma.tags.delete({
     where: {
       id: id,

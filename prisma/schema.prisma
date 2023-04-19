@@ -42,14 +42,14 @@ model Hotels {
 }
 
 model Tags {
-  id       Int  @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   name     String
   Hotels   Hotels? @relation(fields: [hotelsId], references: [id])
   hotelsId String?
 }
 
 model Reviews {
-  id          Int  @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   rating      Int
   user        String
   date        DateTime
@@ -59,7 +59,7 @@ model Reviews {
 }
 
 model Policies {
-  id       Int  @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   name     String
   Hotels   Hotels? @relation(fields: [hotelsId], references: [id])
   hotelsId String?
@@ -81,14 +81,14 @@ model Rooms {
 }
 
 model Amenities {
-  id      Int  @id @default(autoincrement())
+  id      Int     @id @default(autoincrement())
   name    String
   Rooms   Rooms?  @relation(fields: [roomsId], references: [id])
   roomsId String?
 }
 
 model Inclusions {
-  id      Int  @id @default(autoincrement())
+  id      Int     @id @default(autoincrement())
   name    String
   Rooms   Rooms?  @relation(fields: [roomsId], references: [id])
   roomsId String?
@@ -146,6 +146,6 @@ model Roles {
 }
 
 model EmailSubcribers {
-  id      Int  @id @default(autoincrement())
-  Email   String
+  id    Int    @id @default(autoincrement())
+  Email String
 }
