@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Hotels {
-  id               String     @id @default(cuid())
+  id               String    @id @default(cuid())
   HotelName        String
   Website          String
   location         String
@@ -37,15 +37,8 @@ model Hotels {
   SN_Instagram     String
   SN_Pinterest     String
   Reviews          Reviews[]
-  Policies         Policies[]
+  Policies         String?
   Rooms            Rooms[]
-}
-
-model Tags {
-  id       Int     @id @default(autoincrement())
-  name     String
-  Hotels   Hotels? @relation(fields: [hotelsId], references: [id])
-  hotelsId String?
 }
 
 model Reviews {
@@ -56,13 +49,6 @@ model Reviews {
   hotelReview String
   Hotels      Hotels?  @relation(fields: [hotelsId], references: [id])
   hotelsId    String?
-}
-
-model Policies {
-  id       Int     @id @default(autoincrement())
-  name     String
-  Hotels   Hotels? @relation(fields: [hotelsId], references: [id])
-  hotelsId String?
 }
 
 model Rooms {
@@ -78,20 +64,6 @@ model Rooms {
   Inclusions            Inclusions[]
   Hotels                Hotels?      @relation(fields: [hotelsId], references: [id])
   hotelsId              String?
-}
-
-model Amenities {
-  id      Int     @id @default(autoincrement())
-  name    String
-  Rooms   Rooms?  @relation(fields: [roomsId], references: [id])
-  roomsId String?
-}
-
-model Inclusions {
-  id      Int     @id @default(autoincrement())
-  name    String
-  Rooms   Rooms?  @relation(fields: [roomsId], references: [id])
-  roomsId String?
 }
 
 model Users {
@@ -148,4 +120,27 @@ model Roles {
 model EmailSubcribers {
   id    Int    @id @default(autoincrement())
   Email String
+}
+
+model Policies {
+  id   Int    @id @default(autoincrement())
+  Name String
+}
+
+model Tags {
+  id       Int     @id @default(autoincrement())
+  Name     String
+  Hotels   Hotels[]
+}
+
+model Amenities {
+  id    Int     @id @default(autoincrement())
+  Name  String @unique
+  Rooms Rooms[]
+}
+
+model Inclusions {
+  id    Int     @id @default(autoincrement())
+  Name  String
+  Rooms Rooms[]
 }

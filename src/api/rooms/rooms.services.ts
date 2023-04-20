@@ -14,7 +14,8 @@ export const getAllRooms = () => {
     About: true,
     Facility: true,
     Amenities: true,
-    Inclusions: true
+    Inclusions: true,
+    Hotels: true
     }
   })
 }
@@ -29,8 +30,7 @@ export const createRoom = (input: any) => {
       Discount: input.Discount,
       About: input.About,
       Facility: input.Facility,
-      Amenities: input.Amenities,
-      Inclusions: input.Inclusions
+      Hotels: input.Hotels
     }
   })
 }
@@ -50,7 +50,8 @@ export const getRoomById = (id: string) => {
       About: true,
       Facility: true,
       Amenities: true,
-      Inclusions: true
+      Inclusions: true,
+      Hotels: true
     }
   })
 }
@@ -69,7 +70,8 @@ export const updateRoom = (id: string, input: any) => {
       About: input.About,
       Facility: input.Facility,
       Amenities: input.Amenities,
-      Inclusions: input.Inclusions
+      Inclusions: input.Inclusions,
+      Hotels: input.Hotels
     }
   })
 }
