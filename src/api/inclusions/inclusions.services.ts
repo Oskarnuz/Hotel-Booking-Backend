@@ -6,7 +6,7 @@ export const getAllInclusions = () => {
   return prisma.inclusions.findMany({
     select: {
       id: true,
-      name: true,
+      Name: true,
     }
   })
 }
@@ -18,7 +18,7 @@ export const getInclusionById = (id: number) => {
     },
     select: {
       id: true,
-      name: true,
+      Name: true,
     }
   })
 }
@@ -26,7 +26,7 @@ export const getInclusionById = (id: number) => {
 export const createInclusions = (input: any) => {
   return prisma.inclusions.create({
     data: {
-      name: input.name,
+      Name: input.name,
     }
   })
 }
@@ -37,7 +37,7 @@ export const updateInclusions = (id: number, input: any) => {
       id: id,
     },
     data: {
-      name: input.name,
+      Name: input.Name,
     }
   })
 }

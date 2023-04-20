@@ -24,9 +24,9 @@ const seedHotel = async (prisma: PrismaClient): Promise<void> => {
       loc_Lat: faker.address.latitude(),           
       loc_Lng: faker.address.longitude(),           
       loc_Place: faker.address.streetAddress(),         
-      loc_City: "Berlin",          
-      loc_State: "Mitte",       
-      loc_Country: "Germany",     
+      loc_City: "Barcelona",          
+      loc_State: "Cataluña",       
+      loc_Country: "España",     
       FrontImg: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Hotels/hotel${
         Math.floor(Math.random() * 49) + 1
       }.jpeg`,             
@@ -55,8 +55,7 @@ const seedHotel = async (prisma: PrismaClient): Promise<void> => {
         .toLowerCase()}@hotel.com`,             
       HotelDescription: faker.lorem.paragraph(5),
       StarRating: Math.floor(Math.random()* (5 - 2) + 2),         
-      ReviewNumber: faker.datatype.number(10000),       
-      Tags: "{...}",             
+      ReviewNumber: faker.datatype.number(10000),             
       SpecialTags: `${
         Math.floor(Math.random() * 10) === 1
           ? "Certified"
@@ -94,10 +93,7 @@ const seedHotel = async (prisma: PrismaClient): Promise<void> => {
       .split(",")
       .join("")
       .split(".")
-      .join("")}/`,       
-      Reviews: "Review",         
-      Policies: "Policies",  
-      Rooms: "Rooms"               
+      .join("")}/`                  
     }
 
     hotel_arr.push(hotel)

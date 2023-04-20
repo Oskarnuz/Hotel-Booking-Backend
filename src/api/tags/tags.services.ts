@@ -6,7 +6,7 @@ export const getAllTags = () => {
   return prisma.tags.findMany({
     select: {
       id: true,
-      name: true,
+      Name: true,
     }
   })
 }
@@ -18,7 +18,7 @@ export const getTagById = (id: number) => {
     },
     select: {
       id: true,
-      name: true
+      Name: true
     }
   })
 }
@@ -26,7 +26,7 @@ export const getTagById = (id: number) => {
 export const createTags = (input: any) => {
   return prisma.tags.create({
     data: {
-      name: input.name,
+      Name: input.Name,
     }
   })
 }
@@ -37,7 +37,7 @@ export const updateTags = (id: number, input: any) => {
       id: id,
     },
     data: {
-      name: input.name,
+      Name: input.Name,
     }
   })
 }

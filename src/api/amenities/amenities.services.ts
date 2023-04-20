@@ -6,7 +6,7 @@ export const getAllAmenities = () => {
   return prisma.amenities.findMany({
     select: {
       id: true,
-      name: true,
+      Name: true,
     }
   })
 }
@@ -18,7 +18,7 @@ export const getAmenitiesById = (id: number) => {
     },
     select: {
       id: true,
-      name: true,
+      Name: true,
     }
   })
 }
@@ -26,7 +26,7 @@ export const getAmenitiesById = (id: number) => {
 export const createAmenities = (input: any) => {
   return prisma.amenities.create({
     data: {
-      name: input.name,
+      Name: input.Name,
     }
   })
 }
@@ -37,7 +37,7 @@ export const updateAmenities = (id: number, input: any) => {
       id: id,
     },
     data: {
-      name: input.name
+      Name: input.Name
     }
   })
 }
