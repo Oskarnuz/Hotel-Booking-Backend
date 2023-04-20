@@ -12,7 +12,8 @@ import tags from './api/tags'
 import reviews from './api/reviews';
 import rooms from './api/rooms';
 import hotels from './api/hotels';
-import roles from './api/roles'
+import roles from './api/roles';
+import emailsubscription from './api/emailsubscription';
 
 
 const routes = (app: Application): void => {
@@ -29,6 +30,7 @@ const routes = (app: Application): void => {
   app.use('/api/rooms', rooms)
   app.use('/api/hotels', hotels)
   app.use('/api/roles', roles)
+  app.use('/api/emailsubscription', emailsubscription)
 }
 
 export default routes
