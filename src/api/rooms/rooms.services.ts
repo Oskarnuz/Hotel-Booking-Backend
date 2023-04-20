@@ -30,8 +30,6 @@ export const createRoom = (input: any) => {
       Discount: input.Discount,
       About: input.About,
       Facility: input.Facility,
-      // Amenities: input.Amenities,
-      // Inclusions: input.Inclusions,
       Hotels: input.Hotels
     }
   })

@@ -55,8 +55,7 @@ const seedHotel = async (prisma: PrismaClient): Promise<void> => {
         .toLowerCase()}@hotel.com`,             
       HotelDescription: faker.lorem.paragraph(5),
       StarRating: Math.floor(Math.random()* (5 - 2) + 2),         
-      ReviewNumber: faker.datatype.number(10000),       
-      // Tags: "{...}",             
+      ReviewNumber: faker.datatype.number(10000),             
       SpecialTags: `${
         Math.floor(Math.random() * 10) === 1
           ? "Certified"
