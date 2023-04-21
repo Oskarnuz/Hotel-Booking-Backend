@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Hotels {
-  id               String    @id @default(cuid())
+  id               String     @id @default(cuid())
   HotelName        String
   Website          String
   location         String
@@ -37,7 +37,7 @@ model Hotels {
   SN_Instagram     String
   SN_Pinterest     String
   Reviews          Reviews[]
-  Policies         String?
+  Policies         Policies[]
   Rooms            Rooms[]
 }
 
@@ -123,19 +123,20 @@ model EmailSubcribers {
 }
 
 model Policies {
-  id   Int    @id @default(autoincrement())
-  Name String
-}
-
-model Tags {
   id       Int     @id @default(autoincrement())
   Name     String
   Hotels   Hotels[]
 }
 
+model Tags {
+  id     Int      @id @default(autoincrement())
+  Name   String
+  Hotels Hotels[]
+}
+
 model Amenities {
   id    Int     @id @default(autoincrement())
-  Name  String @unique
+  Name  String  @unique
   Rooms Rooms[]
 }
 
