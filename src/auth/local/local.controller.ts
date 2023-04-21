@@ -5,6 +5,8 @@ import jwt from "jsonwebtoken";
 import { login } from "../auth.services";
 import { signToken } from "../auth.services";
 import { getUserById } from "../../api/users/users.services";
+import { welcomeEmail } from "../../utils/welcomeEmail";
+import { sendNodeMailer } from "../../config/nodemailer";
 
 export const signupController = async (req: Request, res: Response) => {
   try {
@@ -12,6 +14,7 @@ export const signupController = async (req: Request, res: Response) => {
     const encPassword = await bcrypt.hash(req.body.password, 10);
     const user = await createUser({ ...req.body, password: encPassword });
     const token = signToken({ id: user.id });
+    await sendNodeMailer(welcomeEmail(user))
     res
       .status(201)
       .json({ message: "User Created", data: { fullName, email }, token });
