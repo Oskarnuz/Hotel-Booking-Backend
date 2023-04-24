@@ -14,7 +14,7 @@ export const getAllEmailSubscription = () => {
 export const createEmailSubscription = (input: any) => {
   return prisma.emailSubcribers.create({
     data: {
-      Email: input.Email
+      Email: input.email
     }
   })
 }

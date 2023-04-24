@@ -14,7 +14,7 @@ export  const welcomeEmail= (user: any ) => {
         <p>Gracias por elegir a Delta Booking</p>
     </div>`
     ,
-    text: `Bienvenido ${user.fullName} gracias por registrarte`,
+    text: `Bienvenido gracias por registrarte`,
     attachments: [
         {   
             filename: 'greetings.txt',
