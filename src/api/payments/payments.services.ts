@@ -49,7 +49,9 @@ export const getPaymentById = (id: string) => {
       CardYear: true,
       CardMonth: true,
       CardCcv: true,
-      Status: true
+      Status: true,
+      createdAt: true,
+      updatedAt: true,
     }
   })
 }

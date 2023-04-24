@@ -88,15 +88,45 @@ export const updateUser = (id: string, input: any) => {
       city: input.city,
       state: input.state,
       zipCode: input.zipCode,
-      email: input.email,
       phoneNumber: input.phoneNumber,
-      password: input.password,
-      bookings: input.bookings,
-      role: input.role,
-      picture: input.picture,
+      bookings: input.bookings
     }
   })
 }
+
+export const updateUserPassword = (id: string, input: any) => {
+  return prisma.users.update({
+    where: {
+      id: id,
+    },
+    data: {
+      password: input.password
+    }
+})
+}
+
+export const updateUserRole = (id: string, input: any) => {
+  return prisma.users.update({
+    where: {
+      id: id,
+    },
+    data: {
+      role: input.role
+    }
+})
+}
+
+export const updateUserPicture = (id: string, input: any) => {
+  return prisma.users.update({
+    where: {
+      id: id,
+    },
+    data: {
+      picture: input.picture
+    }
+})
+}
+
 
 export const deleteUser = (id: string) => {
   return prisma.users.delete({

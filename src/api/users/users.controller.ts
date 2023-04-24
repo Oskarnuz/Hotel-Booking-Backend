@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from "express";
 
-import { getAllUsers, updateUser, getUserById, deleteUser, createUser } from "./users.services";
+import { getAllUsers, updateUser, getUserById, deleteUser, createUser, updateUserPassword, updateUserRole, updateUserPicture } from "./users.services";
 import { AuthUser } from "../../auth/auth.types";
 
 export const getAllUsersController = async (
@@ -62,6 +62,54 @@ export const updateUserController = async (
 
   } catch(error: any) {
     res.status(500).json({ message: "It's not possible update a User" })
+  }
+}
+
+export const updateUserPasswordController = async (
+  req: AuthUser,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id = req.user ? req.user : ''
+
+    const UserUpdated = await updateUserPassword(id, {...req.body});
+    res.status(200).json({ message: 'User password updated', data: UserUpdated });
+
+  } catch(error: any) {
+    res.status(500).json({ message: "It's not possible update User's password" })
+  }
+}
+
+export const updateUserRoleController = async (
+  req: AuthUser,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id = req.user ? req.user : ''
+
+    const UserUpdated = await updateUserRole(id, {...req.body});
+    res.status(200).json({ message: 'User role updated', data: UserUpdated });
+
+  } catch(error: any) {
+    res.status(500).json({ message: "It's not possible update User's role" })
+  }
+}
+
+export const updateUserPictureController = async (
+  req: AuthUser,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id = req.user ? req.user : ''
+
+    const UserUpdated = await updateUserPicture(id, {...req.body});
+    res.status(200).json({ message: 'User picture updated', data: UserUpdated });
+
+  } catch(error: any) {
+    res.status(500).json({ message: "It's not possible update User's picture" })
   }
 }
 

@@ -78,7 +78,8 @@ model Users {
   phoneNumber   String?
   password      String
   bookings      Bookings[]
-  role          Roles[]
+  role          Roles    @relation(fields: [roleId], references: [id])
+  roleId        String
   picture       String?
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
@@ -89,14 +90,16 @@ model Payments {
   CardFirstName  String
   CardSecondName String
   CardBankEntity String
-  CardNumber     String
-  CardType       String
-  CardYear       String
-  CardMonth      String
-  CardCcv        String
+  CardNumber     Int
+  CardType       Int
+  CardYear       Int
+  CardMonth      Int
+  CardCcv        Int
   Status         String
   Bookings       Bookings? @relation(fields: [bookingsId], references: [id])
   bookingsId     String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
 }
 
 model Bookings {
@@ -104,17 +107,18 @@ model Bookings {
   HotelName     String
   RoomType      String
   DateOfStay    DateTime
-  NumberOfGuest String
+  NumberOfGuest Int
   Payments      Payments[]
   Owner         Users?     @relation(fields: [OwnerId], references: [id])
   OwnerId       String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
 }
 
 model Roles {
   id      String  @id @default(cuid())
   Name    String
-  Users   Users?  @relation(fields: [usersId], references: [id])
-  usersId String?
+  Users   Users[]
 }
 
 model EmailSubcribers {
@@ -123,9 +127,9 @@ model EmailSubcribers {
 }
 
 model Policies {
-  id       Int     @id @default(autoincrement())
-  Name     String
-  Hotels   Hotels[]
+  id     Int      @id @default(autoincrement())
+  Name   String
+  Hotels Hotels[]
 }
 
 model Tags {
