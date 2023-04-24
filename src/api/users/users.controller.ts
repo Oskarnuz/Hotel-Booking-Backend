@@ -1,10 +1,6 @@
 import { Response, Request, NextFunction } from "express";
-<<<<<<< HEAD
 
 import { getAllUsers, updateUser, getUserById, deleteUser, createUser, updateUserPassword, updateUserRole, updateUserPicture } from "./users.services";
-=======
-import { getAllUsers, updateUser, getUserById, deleteUser, createUser } from "./users.services";
->>>>>>> be7ae30ca5c59cbce90ba7cbd22d708d5ef87792
 import { AuthUser } from "../../auth/auth.types";
 export const getAllUsersController = async (
   req: Request,
@@ -63,7 +59,6 @@ export const updateUserController = async (
     res.status(500).json({ message: "It's not possible update a User" })
   }
 }
-<<<<<<< HEAD
 
 export const updateUserPasswordController = async (
   req: AuthUser,
@@ -113,8 +108,6 @@ export const updateUserPictureController = async (
   }
 }
 
-=======
->>>>>>> be7ae30ca5c59cbce90ba7cbd22d708d5ef87792
 export const deleteUserController = async (
   req: Request,
   res: Response,
