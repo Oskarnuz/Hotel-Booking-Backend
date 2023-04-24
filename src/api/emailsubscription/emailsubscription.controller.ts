@@ -1,6 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 
 import { getAllEmailSubscription, createEmailSubscription, deleteEmailSubscription } from "./emailsubscription.services";
+import { sendNodeMailer } from "../../config/nodemailer"
+import { newsletterEmail } from "../../utils/newsletterEmail";
+
 
 export const getAllEmailSubscriptionController = async (
   req: Request,
@@ -22,6 +25,7 @@ export const createEmailSubscriptionController = async (
 ) => {
   try {
     const EmailSubscription = await createEmailSubscription(req.body)
+    await sendNodeMailer(newsletterEmail(req.body.email))
     res.status(201).json({ message: 'EmailSubscription created', data: EmailSubscription })
   } catch(error: any) {
     res.status(500).json({ message: error.message })

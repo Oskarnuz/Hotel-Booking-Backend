@@ -1,8 +1,6 @@
 import { Response, Request, NextFunction } from "express";
-
 import { getAllUsers, updateUser, getUserById, deleteUser, createUser } from "./users.services";
 import { AuthUser } from "../../auth/auth.types";
-
 export const getAllUsersController = async (
   req: Request,
   res: Response,
@@ -15,7 +13,7 @@ export const getAllUsersController = async (
     res.status(500).json({ message: "It's not possible to show Users" })
   }
 }
-
+​
 export const createUserController = async (
   req: Request,
   res: Response,
@@ -28,7 +26,7 @@ export const createUserController = async (
     res.status(500).json({ message: "It's not possible create a User" })
   }
 }
-
+​
 export const getUserByIdController = async (
   req: Request,
   res: Response,
@@ -37,7 +35,6 @@ export const getUserByIdController = async (
   try {
     const { id } = req.params
     const user = await getUserById(id)
-
     if(!user) {
       return res.status(404).json({ message: 'User not found' })
     }
@@ -46,7 +43,7 @@ export const getUserByIdController = async (
     res.status(500).json({ message: "It's not possible to show a User" })
   }
 }
-
+​
 export const updateUserController = async (
   req: AuthUser,
   res: Response,
@@ -54,17 +51,13 @@ export const updateUserController = async (
 ) => {
   try {
     const id = req.user ? req.user : ''
-
     const user = await getUserById(id);
-
     const UserUpdated = await updateUser(id, {...req.body, password: user?.password});
     res.status(200).json({ message: 'User updated', data: UserUpdated });
-
   } catch(error: any) {
     res.status(500).json({ message: "It's not possible update a User" })
   }
 }
-
 export const deleteUserController = async (
   req: Request,
   res: Response,

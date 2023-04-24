@@ -8,6 +8,7 @@ import { getUserById } from "../../api/users/users.services";
 import { welcomeEmail } from "../../utils/welcomeEmail";
 import { sendNodeMailer } from "../../config/nodemailer";
 
+
 export const signupController = async (req: Request, res: Response) => {
   try {
     const { fullName, email } = req.body;
@@ -22,7 +23,6 @@ export const signupController = async (req: Request, res: Response) => {
     res.status(500).json({ message: "It's not possible to create a User" });
   }
 };
-
 export const loginController = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -39,8 +39,9 @@ export const loginController = async (req: Request, res: Response) => {
     if (newUser === null) {
       throw new Error("Invalid email or password");
     }
-    const role = newUser.role;
-    const token = signToken({ id: user.id, role });
+    const role = newUser.role[0].Name;
+    const token = signToken({ id: user.id ,role });
+    console.log({ [role]: user.id })
     res
       .status(201)
       .json({
