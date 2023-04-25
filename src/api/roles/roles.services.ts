@@ -11,7 +11,7 @@ export const getAllRoles = () => {
   })
 }
 
-export const getRolesById = (id: string) => {
+export const getRolesById = (id: number) => {
   return prisma.roles.findUnique({
     where: {
       id: id
@@ -31,7 +31,7 @@ export const createRoles = (input: any) => {
   })
 }
 
-export const updateRoles = (id: string, input: any) => {
+export const updateRoles = (id: number, input: any) => {
   return prisma.roles.update({
     where: {
       id: id,
@@ -42,7 +42,7 @@ export const updateRoles = (id: string, input: any) => {
   })
 }
 
-export function deleteRoles(id: string) {
+export function deleteRoles(id: number) {
   return prisma.roles.delete({
     where: {
       id: id,

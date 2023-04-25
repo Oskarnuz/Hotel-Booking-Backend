@@ -27,7 +27,7 @@ model Hotels {
   HotelDescription String
   StarRating       Float
   ReviewNumber     Int
-  Tags             Tags[]
+  Tags             String
   SpecialTags      String
   PopularityNumber Int
   DateAdded        DateTime
@@ -36,8 +36,6 @@ model Hotels {
   SN_Twitter       String
   SN_Instagram     String
   SN_Pinterest     String
-  Reviews          Reviews[]
-  Policies         Policies[]
   Rooms            Rooms[]
 }
 
@@ -47,8 +45,6 @@ model Reviews {
   user        String
   date        DateTime
   hotelReview String
-  Hotels      Hotels?  @relation(fields: [hotelsId], references: [id])
-  hotelsId    String?
 }
 
 model Rooms {
@@ -60,8 +56,8 @@ model Rooms {
   Discount              Int
   About                 String
   Facility              String
-  Amenities             Amenities[]
-  Inclusions            Inclusions[]
+  Amenities             String
+  Inclusions            String 
   Hotels                Hotels?      @relation(fields: [hotelsId], references: [id])
   hotelsId              String?
 }
@@ -79,7 +75,7 @@ model Users {
   password      String
   bookings      Bookings[]
   role          Roles    @relation(fields: [roleId], references: [id])
-  roleId        String
+  roleId        Int
   picture       String?
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
@@ -116,7 +112,7 @@ model Bookings {
 }
 
 model Roles {
-  id      String  @id @default(cuid())
+  id      Int  @id @default(autoincrement())
   Name    String
   Users   Users[]
 }
@@ -129,23 +125,20 @@ model EmailSubcribers {
 model Policies {
   id     Int      @id @default(autoincrement())
   Name   String
-  Hotels Hotels[]
 }
 
 model Tags {
   id     Int      @id @default(autoincrement())
   Name   String
-  Hotels Hotels[]
 }
 
 model Amenities {
   id    Int     @id @default(autoincrement())
   Name  String  @unique
-  Rooms Rooms[]
+
 }
 
 model Inclusions {
   id    Int     @id @default(autoincrement())
   Name  String
-  Rooms Rooms[]
 }
