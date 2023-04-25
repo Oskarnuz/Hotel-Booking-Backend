@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-// CRUD 
+// CRUD
 export const getAllUsers = () => {
   return prisma.users.findMany({
     select: {
@@ -20,16 +20,15 @@ export const getAllUsers = () => {
       role: true,
       picture: true,
       createdAt: true,
-      updatedAt: true
-    }
-  })
-}
+      updatedAt: true,
+    },
+  });
+};
 
 // Create
 
 export const createUser = (input: any) => {
-  const roleId = "clgomzk770002u4n5dai0m910"
-      
+  const roleId = 1
   return prisma.users.create({
     data: {
       fullName: input.fullName,
@@ -46,14 +45,14 @@ export const createUser = (input: any) => {
         connect: { id: roleId },
       },
       picture: "",
-      },    
-  })
-}
+    },
+  });
+};
 
 export const getUserById = (id: string) => {
   return prisma.users.findUnique({
     where: {
-      id: id
+      id: id,
     },
     select: {
       id: true,
@@ -71,10 +70,9 @@ export const getUserById = (id: string) => {
       picture: true,
       createdAt: true,
       updatedAt: true,
-    }
-  
-  })
-}
+    },
+  });
+};
 
 export const updateUser = (id: string, input: any) => {
   return prisma.users.update({
@@ -89,10 +87,10 @@ export const updateUser = (id: string, input: any) => {
       state: input.state,
       zipCode: input.zipCode,
       phoneNumber: input.phoneNumber,
-      bookings: input.bookings
-    }
-  })
-}
+      bookings: input.bookings,
+    },
+  });
+};
 
 export const updateUserPassword = (id: string, input: any) => {
   return prisma.users.update({
@@ -100,10 +98,10 @@ export const updateUserPassword = (id: string, input: any) => {
       id: id,
     },
     data: {
-      password: input.password
-    }
-})
-}
+      password: input.password,
+    },
+  });
+};
 
 export const updateUserRole = (id: string, input: any) => {
   return prisma.users.update({
@@ -111,10 +109,10 @@ export const updateUserRole = (id: string, input: any) => {
       id: id,
     },
     data: {
-      role: input.role
-    }
-})
-}
+      role: input.role,
+    },
+  });
+};
 
 export const updateUserPicture = (id: string, input: any) => {
   return prisma.users.update({
@@ -122,16 +120,15 @@ export const updateUserPicture = (id: string, input: any) => {
       id: id,
     },
     data: {
-      picture: input.picture
-    }
-})
-}
-
+      picture: input.picture,
+    },
+  });
+};
 
 export const deleteUser = (id: string) => {
   return prisma.users.delete({
     where: {
       id: id,
     },
-  })
-}
+  });
+};
