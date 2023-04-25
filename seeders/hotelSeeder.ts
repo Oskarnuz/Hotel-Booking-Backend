@@ -97,9 +97,9 @@ const seedHotel = async (prisma: PrismaClient): Promise<void> => {
         loc_Lat: faker.address.latitude(),
         loc_Lng: faker.address.longitude(),
         loc_Place: faker.address.streetAddress(),
-        loc_City: "San Francisco",
+        loc_City: "Detroit",
         loc_State: "---",
-        loc_Country: "United",
+        loc_Country: "United States",
         FrontImg: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Hotels/hotel${
           Math.floor(Math.random() * 49) + 1
         }.jpeg`,
