@@ -30,7 +30,11 @@ export const createRoom = (input: any) => {
       Discount: input.Discount,
       About: input.About,
       Facility: input.Facility,
-      Hotels: input.Hotels
+      Hotels: {
+        connect: {
+          id: input.hotelsId
+        }
+      }
     }
   })
 }

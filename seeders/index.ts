@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-
-import seedHotel from "./hotelSeeder";
+import seedHotel from "./newhotelSeeder";
+//import seedHotel from "./hotelSeeder";
 
 const prisma = new PrismaClient()
 
