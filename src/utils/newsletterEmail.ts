@@ -1,4 +1,5 @@
 export  const newsletterEmail= (mail: string ) => {
+
   const styles= {
    container: "background: black; border:1p solid gray; color:white",
    title: "text-decoration: underline; "
@@ -21,5 +22,6 @@ export  const newsletterEmail= (mail: string ) => {
        },
     ]
    }
+  
    return email
   }

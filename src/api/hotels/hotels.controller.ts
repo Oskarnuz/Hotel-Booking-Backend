@@ -16,6 +16,8 @@ next: NextFunction
   }
 }
 
+//{response:{message: "", {}}}
+
 export const getHotelByIdController = async (
   req: Request,
   res: Response,
