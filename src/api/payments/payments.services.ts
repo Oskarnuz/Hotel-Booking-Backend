@@ -29,7 +29,12 @@ export const createPayment = (input: any) => {
       CardYear: input.CardYear,
       CardMonth: input.CardMonth,
       CardCcv: input.CardCcv,
-      Status: input.Status
+      Status: input.Status,
+      Bookings: {
+        connect : {
+          id: input.bookingsId
+        }
+      }
     }
   })
 }

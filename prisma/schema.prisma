@@ -86,7 +86,7 @@ model Payments {
   CardFirstName  String
   CardSecondName String
   CardBankEntity String
-  CardNumber     Int
+  CardNumber     String
   CardType       Int
   CardYear       Int
   CardMonth      Int
