@@ -28,7 +28,7 @@ export const getAllUsers = () => {
 // Create
 
 export const createUser = (input: any) => {
-  const roleId = 1
+  const roleId = 1;
   return prisma.users.create({
     data: {
       fullName: input.fullName,
@@ -65,7 +65,18 @@ export const getUserById = (id: string) => {
       email: true,
       phoneNumber: true,
       password: true,
-      bookings: true,
+      bookings: {
+        select: {
+          id: true,
+          HotelName: true,
+          RoomType: true,
+          DateOfStay: true,
+          NumberOfGuest: true,
+          Payments: true,
+          Owner: true,
+          createdAt: true,
+        },
+      },
       role: true,
       picture: true,
       createdAt: true,
