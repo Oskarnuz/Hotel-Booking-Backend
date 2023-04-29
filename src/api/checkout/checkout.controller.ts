@@ -17,7 +17,7 @@ export const handleCheckout =async (req: Request, res: Response) => {
     confirm: true,
     description: 'payment for bookings'
    })
-   console.log(payment)
+
    return res.status(201).json({message: 'payment succesful', payment})
 
     } catch (error) {

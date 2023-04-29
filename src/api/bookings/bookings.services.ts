@@ -10,19 +10,23 @@ export const getAllBookings = () => {
       RoomType: true,
       DateOfStay:true,
       NumberOfGuest:true,
-      Payments:true
+      Payments:true,
+      Owner: true
     }
   })
 }
 
-export const createBooking = (input: any) => {
+export const createBooking = (input: any, id: string) => {
   return prisma.bookings.create({
     data: {
       HotelName: input.HotelName,
       RoomType: input.RoomType,
       DateOfStay:input.DateOfStay,
       NumberOfGuest:input.NumberOfGuest,
-      Payments: input.Payments
+      Payments: input.Payments,
+      Owner: {
+        connect: { id }
+      }
     }
   })
 }
