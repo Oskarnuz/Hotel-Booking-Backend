@@ -25,7 +25,7 @@ export const createEmailSubscriptionController = async (
 ) => {
   try {
     const EmailSubscription = await createEmailSubscription(req.body)
-    await sendNodeMailer(newsletterEmail(req.body.email))
+    await sendNodeMailer(newsletterEmail(req.body.Email))
     res.status(201).json({ message: 'EmailSubscription created', data: EmailSubscription })
   } catch(error: any) {
     res.status(500).json({ message: error.message })
