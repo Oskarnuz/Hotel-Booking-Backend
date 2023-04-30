@@ -10,9 +10,10 @@ export const getAllPayments = () => {
       CardBankEntity: true,
       CardNumber: true,
       CardType: true,
-      CardYear: true,
-      CardMonth: true,
-      CardCcv: true,
+      FinalPrice: true,
+      Tax: true,
+      BasePrice: true,
+      PromoCode: true,
       Status: true
     }
   })
@@ -26,11 +27,12 @@ export const createPayment = (input: any) => {
       CardBankEntity: input.CardBankEntity,
       CardNumber: input.CardNumber,
       CardType: input.CardType,
-      CardYear: input.CardYear,
-      CardMonth: input.CardMonth,
-      CardCcv: input.CardCcv,
+      FinalPrice: input.FinalPrice,
+      Tax: input.Tax,
+      BasePrice: input.BasePrice,
+      PromoCode: input.PromoCode,
       Status: input.Status,
-      Bookings: {
+      bookings: {
         connect : {
           id: input.bookingsId
         }
@@ -51,9 +53,10 @@ export const getPaymentById = (id: string) => {
       CardBankEntity: true,
       CardNumber: true,
       CardType: true,
-      CardYear: true,
-      CardMonth: true,
-      CardCcv: true,
+      FinalPrice: true,
+      Tax: true,
+      BasePrice: true,
+      PromoCode: true,
       Status: true,
       createdAt: true,
       updatedAt: true,
@@ -72,9 +75,10 @@ export const updatePayment = (id: string, input: any) => {
       CardBankEntity: input.CardBankEntity,
       CardNumber: input.CardNumber,
       CardType: input.CardType,
-      CardYear: input.CardYear,
-      CardMonth: input.CardMonth,
-      CardCcv: input.CardCcv,
+      FinalPrice: input.FinalPrice,
+      Tax: input.Tax,
+      BasePrice: input.BasePrice,
+      PromoCode: input.PromoCode,
       Status: input.Status
     }
   })

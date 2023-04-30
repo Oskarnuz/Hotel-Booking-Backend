@@ -72,7 +72,7 @@ export const getUserById = (id: string) => {
           RoomType: true,
           DateOfStay: true,
           NumberOfGuest: true,
-          Payments: true,
+          payments: true,
           Owner: true,
           createdAt: true,
         },

@@ -10,7 +10,7 @@ export const getAllBookings = () => {
       RoomType: true,
       DateOfStay:true,
       NumberOfGuest:true,
-      Payments:true,
+      payments:true,
       Owner: true
     }
   })
@@ -23,7 +23,7 @@ export const createBooking = (input: any, id: string) => {
       RoomType: input.RoomType,
       DateOfStay:input.DateOfStay,
       NumberOfGuest:input.NumberOfGuest,
-      Payments: input.Payments,
+      payments: input.payments,
       Owner: {
         connect: { id }
       }
@@ -42,7 +42,7 @@ export const getBookingById = (id: string) => {
       RoomType: true,
       DateOfStay:true,
       NumberOfGuest:true,
-      Payments:true
+      payments:true
     }
   })
 }
@@ -57,7 +57,7 @@ export const updateBooking = (id: string, input: any) => {
       RoomType: input.RoomType,
       DateOfStay:input.DateOfStay,
       NumberOfGuest:input.NumberOfGuest,
-      Payments: input.Payments
+      payments: input.payments
     }
   })
 }
