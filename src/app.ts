@@ -14,7 +14,6 @@ routes(app)
 
 
 app.post('/test-formdata', formData,(req,res)=>{
-  console.log('new body', req.body)
   res.status(200).json({...req.body})
 })
 

@@ -98,9 +98,11 @@ export const updateUserPictureController = async (
   next: NextFunction
 ) => {
   try {
+    console.log("Before Id")
     const id = req.user ? req.user : ''
-
+    console.log('before Update', id)
     const UserUpdated = await updateUserPicture(id, {...req.body});
+    console.log("userupdated", UserUpdated)
     res.status(200).json({ message: 'User picture updated', data: UserUpdated });
 
   } catch(error: any) {

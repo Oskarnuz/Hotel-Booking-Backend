@@ -10,24 +10,38 @@ cloudinary.config({
 });
 
 export const formData = (req: Request, res: Response, next: NextFunction) =>{
+    let uploadFile=false
+    let uploadCount= 0
+
+    const done = () =>{
+     if(uploadFile) return  
+     if(uploadCount	>0) return
+        next()
+    }
+
     const bb = busboy ({headers: req.headers})
     req.body = {}
 
-    const done = () =>{
-        next()
-    }
+  
 
     bb.on('field', (key, val) =>{
         req.body[key]= val
     })
 
     bb.on('file', (key,stream) =>{
-       
+       uploadFile= true
+       uploadCount ++
+
         const cloud =cloudinary.uploader.upload_stream(
         {upload_preset: 'hotel-booking-preset'},
-       (err,res) =>{
+        (err,res) =>{
         if (err) throw new Error('Error in the uploading')
-        console.log('response', res)
+        
+
+        req.body[key]= res?.secure_url
+        uploadFile=false
+        uploadCount--
+        done()
         })
 
         stream.on('data',(data) =>{
