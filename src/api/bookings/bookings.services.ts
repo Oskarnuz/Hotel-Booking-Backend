@@ -8,7 +8,11 @@ export const getAllBookings = () => {
       id: true,
       HotelName: true,
       RoomType: true,
-      DateOfStay:true,
+      CheckInDate: true,
+      CheckOutDate: true,
+      SpecialReqs: true,
+      HotelCity: true,
+      HotelCountry: true,
       NumberOfGuest:true,
       payments:true,
       Owner: true
@@ -21,7 +25,11 @@ export const createBooking = (input: any, id: string) => {
     data: {
       HotelName: input.HotelName,
       RoomType: input.RoomType,
-      DateOfStay:input.DateOfStay,
+      CheckInDate: input.CheckInDate,
+      CheckOutDate: input.CheckOutDate,
+      SpecialReqs: input.SpecialReqs,
+      HotelCity: input.HotelCity,
+      HotelCountry: input.HotelCountry,
       NumberOfGuest:input.NumberOfGuest,
       payments: input.payments,
       Owner: {
@@ -40,7 +48,11 @@ export const getBookingById = (id: string) => {
       id: true,
       HotelName: true,
       RoomType: true,
-      DateOfStay:true,
+      CheckInDate: true,
+      CheckOutDate: true,
+      SpecialReqs: true,
+      HotelCity: true,
+      HotelCountry: true,
       NumberOfGuest:true,
       payments:true
     }
@@ -55,7 +67,11 @@ export const updateBooking = (id: string, input: any) => {
     data: {
       HotelName: input.HotelName,
       RoomType: input.RoomType,
-      DateOfStay:input.DateOfStay,
+      CheckInDate: input.CheckInDate,
+      CheckOutDate: input.CheckOutDate,
+      SpecialReqs: input.SpecialReqs,
+      HotelCity: input.HotelCity,
+      HotelCountry: input.HotelCountry,
       NumberOfGuest:input.NumberOfGuest,
       payments: input.payments
     }

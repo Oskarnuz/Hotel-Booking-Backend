@@ -103,7 +103,11 @@ model Bookings {
   id            String     @id @default(cuid())
   HotelName     String
   RoomType      String
-  DateOfStay    DateTime
+  CheckInDate   String
+  CheckOutDate  String
+  SpecialReqs   String
+  HotelCity     String
+  HotelCountry  String
   NumberOfGuest Int
   payments      Payments?
   Owner         Users?     @relation(fields: [OwnerId], references: [id])
