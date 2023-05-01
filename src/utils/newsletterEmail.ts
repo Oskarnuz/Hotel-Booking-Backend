@@ -14,7 +14,9 @@ export const newsletterEmail = (mail: string) => {
       <h1 style="${styles.title}">Subscribe to our Newsletter</h1>
       <p style="${styles.subtitle}">Get the latest updates on our hotel bookings and promotions straight to your inbox.</p>
       <p style="${styles.text}">Thank you for subscribing to our newsletter! You'll be the first to know about new hotel deals and other exciting promotions. If you have any questions or concerns, please don't hesitate to contact us.</p>
-    </div>`,
+      <span style="${styles.text}">Here is your promo code: "Make It Real"</span>
+      </div>`,
+
    
   };
   return email;
