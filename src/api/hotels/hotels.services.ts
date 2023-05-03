@@ -142,7 +142,7 @@ export const updateHotels = (id: string, input: any) => {
       SN_Twitter: input.SN_Twitter,
       SN_Instagram: input.SN_Instagram,
       SN_Pinterest: input.SN_Pinterest,
-      Rooms: input.Rooms,
+
     },
   });
 };
