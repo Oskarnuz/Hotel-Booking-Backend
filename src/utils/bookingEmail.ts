@@ -17,7 +17,7 @@ export const bookingEmail = (booking: any, user: any) => {
     subject: "Here is your reservation info",
     html: `
       <div style="${styles.container}">
-        
+       <img src='https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/669c1d5973c6453cb43fa2e937c197fd28891652/src/assets/Icons/delta-black.svg'}} />  
       <h1 style="${styles.title}">Your booking for ${booking.HotelName} was successful!</h1>
         <p style="${styles.subtitle}">You chose the ${booking.RoomType} room for a stay from ${booking.CheckInDate} to ${booking.CheckOutDate} with ${booking.NumberOfGuest} guests.</p>
         <p style="${styles.message}">Please arrive on time for check-in and enjoy your stay!</p>
