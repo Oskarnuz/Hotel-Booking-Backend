@@ -8,6 +8,8 @@ import {
   deleteBooking,
 } from "./bookings.services";
 import { signToken, verifyToken } from "../../auth/auth.services";
+import { sendNodeMailer } from "../../config/nodemailer";
+import { bookingEmail } from "../../utils/bookingEmail";
 
 export const getAllBookingsController = async (
   req: Request,
@@ -66,7 +68,7 @@ export const createBookingController = async (
     // }
     const booking = await createBooking(req.body , id);
     console.log(booking) // CHECK THIS MICHAEL
-      
+      await sendNodeMailer(bookingEmail(booking, id)) 
     res.status(201).json({ message: "Booking Created", data: booking });
   } catch (error: any) {
     res.status(500).json({ message: error.message });

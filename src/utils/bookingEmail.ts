@@ -1,4 +1,4 @@
-export const bookingEmail = (booking: any, user:any) => {
+export const bookingEmail = (booking: any, id:any) => {
   const styles = {
     container: "background-color: #f7f7f7; border-radius: 10px; padding: 20px; font-family: sans-serif; font-size: 16px; line-height: 1.5em; color: #333;",
     title: "font-size: 24px; font-weight: bold; margin-bottom: 10px;",
@@ -11,7 +11,7 @@ export const bookingEmail = (booking: any, user:any) => {
 
   const email = {
     from: "Delta Booking <deltabooking40@gmail.com>",
-    to:user.mail,
+    to:id.email,
     subject: "Here is your reservation info",
     html: `
       <div style="${styles.container}">
