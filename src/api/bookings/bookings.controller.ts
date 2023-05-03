@@ -65,6 +65,7 @@ export const createBookingController = async (
     //   throw new Error("CREEME OSCAR, SE LO QUE HAGO");
     // }
     const booking = await createBooking(req.body , id);
+    console.log(booking) // CHECK THIS MICHAEL
       
     res.status(201).json({ message: "Booking Created", data: booking });
   } catch (error: any) {

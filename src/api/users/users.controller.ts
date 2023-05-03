@@ -68,11 +68,11 @@ export const updateUserPasswordController = async (
 ) => {
   try {
     const id = req.user ? req.user : '';
-    const newPassword = req.body.newPassword;
-
+    const newPassword = req.body.password;
+    
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     const UserUpdated = await updateUserPassword(id, { password: hashedPassword });
-
+    
     res.status(200).json({ message: 'User password updated', data: UserUpdated });
   } catch(error: any) {
     res.status(500).json({ message: "It's not possible update User's password" });
