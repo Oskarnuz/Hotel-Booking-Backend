@@ -143,7 +143,7 @@ export const updateUserPicture = (id: string, input: any) => {
   });
 };
 
-export const deleteUser = (id: string) => { 
+export const deleteUser = (id: string) => {
   return prisma.users.delete({
     where: {
       id,
