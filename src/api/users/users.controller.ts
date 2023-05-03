@@ -67,10 +67,12 @@ export const updateUserPasswordController = async (
 ) => {
   try {
     const id = req.user ? req.user : ''
-
+    console.log(req.body);
+    
     const UserUpdated = await updateUserPassword(id, {...req.body});
+    console.log("password", UserUpdated);
     res.status(200).json({ message: 'User password updated', data: UserUpdated });
-
+    
   } catch(error: any) {
     res.status(500).json({ message: "It's not possible update User's password" })
   }

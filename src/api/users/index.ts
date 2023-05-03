@@ -10,7 +10,7 @@ router.get("/", getAllUsersController);
 router.get("/:id", getUserByIdController);
 router.post("/", createUserController);
 router.put("/:id", auth, updateUserController);
-router.put("/:id", auth, updateUserPasswordController);
+router.put("/:id/password", auth, updateUserPasswordController);
 router.put("/:id", auth, updateUserRoleController);
 router.put("/:id/picture", auth, updateUserPictureController);
 

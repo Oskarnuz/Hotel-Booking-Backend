@@ -15,7 +15,8 @@ export const getAllBookings = () => {
       HotelCountry: true,
       NumberOfGuest:true,
       payments:true,
-      Owner: true
+      Owner: true,
+      createdAt: true,
     }
   })
 }
