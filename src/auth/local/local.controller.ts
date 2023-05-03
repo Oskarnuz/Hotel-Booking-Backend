@@ -40,8 +40,9 @@ export const loginController = async (req: Request, res: Response) => {
       throw new Error("Invalid email or password");
     }
     const role = newUser.role.Name;
-    const token = signToken({ id: user.id ,role });
-    console.log({ [role]: user.id })
+    const token = signToken({ id: user.id ,role, fullName });
+    // console.log("get here", token)
+    // console.log({ [role]: user.id })
     res
       .status(201)
       .json({

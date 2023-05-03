@@ -11,7 +11,7 @@ router.get("/:id", getUserByIdController);
 router.post("/", createUserController);
 router.put("/:id", auth, updateUserController);
 router.put("/:id/password", auth, updateUserPasswordController);
-router.put("/:id", auth, updateUserRoleController);
+router.put("/:id/role", auth, updateUserRoleController);
 router.put("/:id/picture", auth, updateUserPictureController);
 
 router.delete("/:id", auth, deleteUserController);

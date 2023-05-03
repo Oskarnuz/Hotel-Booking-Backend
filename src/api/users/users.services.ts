@@ -124,7 +124,10 @@ export const updateUserRole = (id: string, input: any) => {
       id: id,
     },
     data: {
-      role: input.role,
+      roleId: input.newRrole,
+      role: {
+        connect: { id: input.newRole },
+      },
     },
   });
 };
@@ -140,10 +143,10 @@ export const updateUserPicture = (id: string, input: any) => {
   });
 };
 
-export const deleteUser = (id: string) => {
+export const deleteUser = (id: string) => { 
   return prisma.users.delete({
     where: {
-      id: id,
+      id,
     },
   });
 };
