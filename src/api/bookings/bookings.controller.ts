@@ -59,7 +59,7 @@ export const createBookingController = async (
     if (!token) {
       throw new Error("Invalid Token!");
     }
-    
+    console.log("token", token)
     const { id } = verifyToken(token) as { id: string  }
     // const {role} = verifyToken(token) as { role: string  }
     // console.log("role =>", role)
@@ -68,7 +68,7 @@ export const createBookingController = async (
     // }
     const booking = await createBooking(req.body , id);
     console.log(booking) // CHECK THIS MICHAEL
-      await sendNodeMailer(bookingEmail(booking, id)) 
+      // await sendNodeMailer(bookingEmail(booking, id)) 
     res.status(201).json({ message: "Booking Created", data: booking });
   } catch (error: any) {
     res.status(500).json({ message: error.message });
