@@ -8,14 +8,13 @@ import { getUserById } from "../../api/users/users.services";
 import { welcomeEmail } from "../../utils/welcomeEmail";
 import { sendNodeMailer } from "../../config/nodemailer";
 
-
 export const signupController = async (req: Request, res: Response) => {
   try {
     const { fullName, email } = req.body;
     const encPassword = await bcrypt.hash(req.body.password, 10);
     const user = await createUser({ ...req.body, password: encPassword });
     const token = signToken({ id: user.id });
-    await sendNodeMailer(welcomeEmail(user))
+    await sendNodeMailer(welcomeEmail(user));
     res
       .status(201)
       .json({ message: "User Created", data: { fullName, email }, token });
@@ -40,16 +39,13 @@ export const loginController = async (req: Request, res: Response) => {
       throw new Error("Invalid email or password");
     }
     const role = newUser.role.Name;
-    const token = signToken({ id: user.id ,role, fullName });
-    // console.log("get here", token)
-    // console.log({ [role]: user.id })
-    res
-      .status(201)
-      .json({
-        message: "User login successfully",
-        data: { email, fullName, },
-        token,
-      });
+    const token = signToken({ id: user.id, role, fullName });
+
+    res.status(201).json({
+      message: "User login successfully",
+      data: { email, fullName },
+      token,
+    });
   } catch (error: any) {
     res.status(500).json({ message: "It's not possible to login a User" });
   }

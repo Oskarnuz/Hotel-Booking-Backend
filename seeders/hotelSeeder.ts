@@ -185,56 +185,55 @@ const seedHotel = async (prisma: PrismaClient): Promise<void> => {
               Amenities: randomAmenities,
               Inclusions: randomInclusions,
             },
-              {
-                Available: true,
-                RoomImg: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Rooms/room${
-                  Math.floor(Math.random() * 114) + 1
-                }.jpeg`,
-                RoomName: "Deluxe Room",
-                OriginalPricePerNight: Math.floor(Math.random() * 80) + 5,
-                Discount: Math.floor(Math.random() * 10) + 3,
-                About: faker.lorem.paragraph(),
-                Facility: `Floors ${Math.floor(Math.random() * 60)} - ${
-                  Math.floor(Math.random() * 20) + 60
-                }`,
-                Amenities: randomAmenities,
-                Inclusions: randomInclusions,
-              },
-              {
-                Available: true,
-                RoomImg: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Rooms/room${
-                  Math.floor(Math.random() * 114) + 1
-                }.jpeg`,
-                RoomName: "Medium Deluxe Room",
-                OriginalPricePerNight: Math.floor(Math.random() * 80) + 5,
-                Discount: Math.floor(Math.random() * 10) + 3,
-                About: faker.lorem.paragraph(),
-                Facility: `Floors ${Math.floor(Math.random() * 60)} - ${
-                  Math.floor(Math.random() * 20) + 60
-                }`,
-                Amenities: randomAmenities,
-                Inclusions: randomInclusions,
-              },
-              {
-                Available: true,
-                RoomImg: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Rooms/room${
-                  Math.floor(Math.random() * 114) + 1
-                }.jpeg`,
-                RoomName: "Economy Class Room",
-                OriginalPricePerNight: Math.floor(Math.random() * 80) + 5,
-                Discount: Math.floor(Math.random() * 10) + 3,
-                About: faker.lorem.paragraph(),
-                Facility: `Floors ${Math.floor(Math.random() * 60)} - ${
-                  Math.floor(Math.random() * 20) + 60
-                }`,
-                Amenities: randomAmenities,
-                Inclusions: randomInclusions,
-              },
+            {
+              Available: true,
+              RoomImg: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Rooms/room${
+                Math.floor(Math.random() * 114) + 1
+              }.jpeg`,
+              RoomName: "Deluxe Room",
+              OriginalPricePerNight: Math.floor(Math.random() * 80) + 5,
+              Discount: Math.floor(Math.random() * 10) + 3,
+              About: faker.lorem.paragraph(),
+              Facility: `Floors ${Math.floor(Math.random() * 60)} - ${
+                Math.floor(Math.random() * 20) + 60
+              }`,
+              Amenities: randomAmenities,
+              Inclusions: randomInclusions,
+            },
+            {
+              Available: true,
+              RoomImg: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Rooms/room${
+                Math.floor(Math.random() * 114) + 1
+              }.jpeg`,
+              RoomName: "Medium Deluxe Room",
+              OriginalPricePerNight: Math.floor(Math.random() * 80) + 5,
+              Discount: Math.floor(Math.random() * 10) + 3,
+              About: faker.lorem.paragraph(),
+              Facility: `Floors ${Math.floor(Math.random() * 60)} - ${
+                Math.floor(Math.random() * 20) + 60
+              }`,
+              Amenities: randomAmenities,
+              Inclusions: randomInclusions,
+            },
+            {
+              Available: true,
+              RoomImg: `https://raw.githubusercontent.com/RandomBlueGuy/PROYECTO-FINAL-MIR/main/src/DataBase/Hotel/Rooms/room${
+                Math.floor(Math.random() * 114) + 1
+              }.jpeg`,
+              RoomName: "Economy Class Room",
+              OriginalPricePerNight: Math.floor(Math.random() * 80) + 5,
+              Discount: Math.floor(Math.random() * 10) + 3,
+              About: faker.lorem.paragraph(),
+              Facility: `Floors ${Math.floor(Math.random() * 60)} - ${
+                Math.floor(Math.random() * 20) + 60
+              }`,
+              Amenities: randomAmenities,
+              Inclusions: randomInclusions,
+            },
           ],
         },
       },
     });
   }
-  console.log("Hotel seeded successfully");
 };
 export default seedHotel;
