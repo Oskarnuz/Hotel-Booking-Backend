@@ -4,7 +4,7 @@ import seedHotel from "./hotelSeeder";
 
 const prisma = new PrismaClient();
 
-const seeders = [seedReview];
+const seeders = [seedHotel];
 
 const seed = async () => {
   for (const seeder of seeders) {
