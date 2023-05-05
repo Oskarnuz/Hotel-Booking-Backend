@@ -77,7 +77,6 @@ export const updateRoom = (id: string, input: any) => {
       Facility: input.Facility,
       Amenities: input.Amenities,
       Inclusions: input.Inclusions,
-      Hotels: input.Hotels,
     },
   });
 };

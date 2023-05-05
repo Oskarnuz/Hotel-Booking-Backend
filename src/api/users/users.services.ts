@@ -28,7 +28,7 @@ export const getAllUsers = () => {
 // Create
 
 export const createUser = (input: any) => {
-  const roleId = 1
+  const roleId = 1;
   return prisma.users.create({
     data: {
       fullName: input.fullName,
@@ -65,7 +65,22 @@ export const getUserById = (id: string) => {
       email: true,
       phoneNumber: true,
       password: true,
-      bookings: true,
+      bookings: {
+        select: {
+          id: true,
+          HotelName: true,
+          RoomType: true,
+          CheckInDate: true,
+          CheckOutDate: true,
+          SpecialReqs: true,
+          HotelCity: true,
+          HotelCountry: true,
+          NumberOfGuest: true,
+          payments: true,
+          Owner: true,
+          createdAt: true,
+        },
+      },
       role: true,
       picture: true,
       createdAt: true,
@@ -109,7 +124,10 @@ export const updateUserRole = (id: string, input: any) => {
       id: id,
     },
     data: {
-      role: input.role,
+      roleId: input.newRrole,
+      role: {
+        connect: { id: input.newRole },
+      },
     },
   });
 };
@@ -128,7 +146,7 @@ export const updateUserPicture = (id: string, input: any) => {
 export const deleteUser = (id: string) => {
   return prisma.users.delete({
     where: {
-      id: id,
+      id,
     },
   });
 };

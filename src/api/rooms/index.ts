@@ -22,3 +22,4 @@ router.put("/:id", updateRoomController);
 router.delete("/:id", deleteRoomController);
 
 export default router
+

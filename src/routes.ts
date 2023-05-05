@@ -14,7 +14,8 @@ import rooms from './api/rooms';
 import hotels from './api/hotels';
 import roles from './api/roles';
 import emailsubscription from './api/emailsubscription';
-import checkout from './api/checkout'
+import checkout from "./api/checkout"
+
 
 const routes = (app: Application): void => {
   app.use('/api/healthcheck', healthcheck)

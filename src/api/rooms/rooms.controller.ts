@@ -55,12 +55,12 @@ export const updateRoomController = async (
 ) => {
   try {
     const { id } = req.params
+    console.log(req.body)
     const room = await updateRoom(id, req.body)
 
     if(!room) {
       return res.status(404).json({ message: 'Room not found' })
     }
-
     res.status(201).json({ message: 'Room updated', data: room })
   } catch(error: any) {
     res.status(500).json({ message: "It's not possible update a Room" })

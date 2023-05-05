@@ -22,8 +22,7 @@ export const getRolesByIdController = async (
 ) => {
   try {
     const { id } = req.params
-    const role_id= parseInt(id)
-    const role = await getRolesById(role_id)
+    const role = await getRolesById(Number(id))
 
     if(!role) {
       return res.status(404).json({ message: 'Amenity not found '})
@@ -54,8 +53,7 @@ export const updateRolesController = async (
 ) => {
   try {
     const { id } = req.params
-     const role_id= parseInt(id)
-    const roles = await updateRoles(role_id, req.body)
+    const roles = await updateRoles(Number(id), req.body)
 
     if(!roles) {
       return res.status(404).json({ message: 'Roles not found' })
@@ -74,8 +72,7 @@ export const deleteRolesController = async (
 ) => {
   try {
     const { id } = req.params;
-    const role_id= parseInt(id)
-    const Roles = await deleteRoles(role_id);
+    const Roles = await deleteRoles(Number(id));
     res.json(Roles);
   } catch(error: any) {
     res.status(500).json({ message: error.message })

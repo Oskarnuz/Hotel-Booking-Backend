@@ -86,14 +86,15 @@ model Payments {
   CardFirstName  String
   CardSecondName String
   CardBankEntity String
-  CardNumber     Int
+  CardNumber     String
   CardType       Int
-  CardYear       Int
-  CardMonth      Int
-  CardCcv        Int
+  FinalPrice     Int
+  Tax            Int
+  BasePrice      Int
+  PromoCode      Boolean
   Status         String
-  Bookings       Bookings? @relation(fields: [bookingsId], references: [id])
-  bookingsId     String?
+  bookings       Bookings? @relation(fields: [bookingsId], references: [id])
+  bookingsId     String?  @unique
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
 }
@@ -102,9 +103,13 @@ model Bookings {
   id            String     @id @default(cuid())
   HotelName     String
   RoomType      String
-  DateOfStay    DateTime
+  CheckInDate   String
+  CheckOutDate  String
+  SpecialReqs   String
+  HotelCity     String
+  HotelCountry  String
   NumberOfGuest Int
-  Payments      Payments[]
+  payments      Payments?
   Owner         Users?     @relation(fields: [OwnerId], references: [id])
   OwnerId       String?
   createdAt     DateTime   @default(now())

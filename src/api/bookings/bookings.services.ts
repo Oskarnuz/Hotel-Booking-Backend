@@ -8,21 +8,34 @@ export const getAllBookings = () => {
       id: true,
       HotelName: true,
       RoomType: true,
-      DateOfStay:true,
+      CheckInDate: true,
+      CheckOutDate: true,
+      SpecialReqs: true,
+      HotelCity: true,
+      HotelCountry: true,
       NumberOfGuest:true,
-      Payments:true
+      payments:true,
+      Owner: true,
+      createdAt: true,
     }
   })
 }
 
-export const createBooking = (input: any) => {
+export const createBooking = (input: any, id: string) => {
   return prisma.bookings.create({
     data: {
       HotelName: input.HotelName,
       RoomType: input.RoomType,
-      DateOfStay:input.DateOfStay,
+      CheckInDate: input.CheckInDate,
+      CheckOutDate: input.CheckOutDate,
+      SpecialReqs: input.SpecialReqs,
+      HotelCity: input.HotelCity,
+      HotelCountry: input.HotelCountry,
       NumberOfGuest:input.NumberOfGuest,
-      Payments: input.Payments
+      payments: input.payments,
+      Owner: {
+        connect: { id }
+      }
     }
   })
 }
@@ -36,9 +49,13 @@ export const getBookingById = (id: string) => {
       id: true,
       HotelName: true,
       RoomType: true,
-      DateOfStay:true,
+      CheckInDate: true,
+      CheckOutDate: true,
+      SpecialReqs: true,
+      HotelCity: true,
+      HotelCountry: true,
       NumberOfGuest:true,
-      Payments:true
+      payments:true
     }
   })
 }
@@ -51,9 +68,13 @@ export const updateBooking = (id: string, input: any) => {
     data: {
       HotelName: input.HotelName,
       RoomType: input.RoomType,
-      DateOfStay:input.DateOfStay,
+      CheckInDate: input.CheckInDate,
+      CheckOutDate: input.CheckOutDate,
+      SpecialReqs: input.SpecialReqs,
+      HotelCity: input.HotelCity,
+      HotelCountry: input.HotelCountry,
       NumberOfGuest:input.NumberOfGuest,
-      Payments: input.Payments
+      payments: input.payments
     }
   })
 }
