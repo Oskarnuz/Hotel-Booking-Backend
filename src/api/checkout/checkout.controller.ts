@@ -8,6 +8,7 @@ const stripe = new Stripe(STRIPE_SECRET_KEY, {
 
 export const handleCheckout = async (req: Request, res: Response) => {
   const { paymentMethod, amount } = req.body;
+
   try {
     const { id, card } = paymentMethod;
     const payment = await stripe.paymentIntents.create({
