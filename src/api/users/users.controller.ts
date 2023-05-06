@@ -10,10 +10,11 @@ import {
   updateUserPassword,
   updateUserRole,
   updateUserPicture,
-  recoverPassword
+  recoverPassword,
 } from "./users.services";
 import { AuthUser } from "../../auth/auth.types";
-import { log } from "console";
+import { sendNodeMailer } from "../../config/nodemailer";
+import { recoverEmail } from "../../utils/recoverEmail";
 export const getAllUsersController = async (
   req: Request,
   res: Response,
@@ -152,36 +153,45 @@ export const recoverPasswordController = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.body)
     const { email } = req.body;
 
     const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
-  const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const numbers = "0123456789";
-  
-  let password = "";
-  
-  // Add one random uppercase letter
-  password += uppercaseLetters.charAt(Math.floor(Math.random() * uppercaseLetters.length));
+    const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numbers = "0123456789";
 
-  // Add one random number
-  password += numbers.charAt(Math.floor(Math.random() * numbers.length));
+    let password = "";
 
-  // Add six random characters
-  for (let i = 0; i < 6; i++) {
-    const randomChar = Math.floor(Math.random() * 3);
-    password += [lowercaseLetters, uppercaseLetters, numbers][randomChar].charAt(Math.floor(Math.random() * [lowercaseLetters, uppercaseLetters, numbers][randomChar].length));
-  }
+    // Add one random uppercase letter
+    password += uppercaseLetters.charAt(
+      Math.floor(Math.random() * uppercaseLetters.length)
+    );
+
+    // Add one random number
+    password += numbers.charAt(Math.floor(Math.random() * numbers.length));
+
+    // Add six random characters
+    for (let i = 0; i < 6; i++) {
+      const randomChar = Math.floor(Math.random() * 3);
+      password += [lowercaseLetters, uppercaseLetters, numbers][
+        randomChar
+      ].charAt(
+        Math.floor(
+          Math.random() *
+            [lowercaseLetters, uppercaseLetters, numbers][randomChar].length
+        )
+      );
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await recoverPassword(email);
-    console.log(user)
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
     const UserUpdated = await updateUserPassword(user.id, {
       password: hashedPassword,
     });
+    await sendNodeMailer(recoverEmail(password, UserUpdated));
     res.status(201).json({ message: "Password Recovered", data: password });
   } catch (error: any) {
     res.status(500).json({ message: "It's not possible to show a User" });
