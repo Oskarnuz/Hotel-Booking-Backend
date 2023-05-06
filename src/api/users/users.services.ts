@@ -143,6 +143,19 @@ export const updateUserPicture = (id: string, input: any) => {
   });
 };
 
+export const recoverPassword = (email: string) => {
+  return prisma.users.findUnique({
+    where: {
+      email: email,
+    },
+    select: {
+      id: true,
+      password: true,
+    },
+  });
+};
+
+
 export const deleteUser = (id: string) => {
   return prisma.users.delete({
     where: {

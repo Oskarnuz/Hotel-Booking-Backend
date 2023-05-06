@@ -1,6 +1,7 @@
 import { Router } from "express";
 
-import { getAllUsersController, getUserByIdController, createUserController, updateUserController, deleteUserController, updateUserPasswordController, updateUserPictureController, updateUserRoleController } from "./users.controller"
+import { getAllUsersController, getUserByIdController, createUserController, updateUserController, deleteUserController, updateUserPasswordController, updateUserPictureController, updateUserRoleController,
+recoverPasswordController } from "./users.controller"
 import { auth } from "../middlewares/auth";
 
 
@@ -13,6 +14,7 @@ router.put("/:id", auth, updateUserController);
 router.put("/:id/password", auth, updateUserPasswordController);
 router.put("/:id/role", auth, updateUserRoleController);
 router.put("/:id/picture", auth, updateUserPictureController);
+router.post("/recover", recoverPasswordController)
 
 router.delete("/:id", auth, deleteUserController);
 
