@@ -55,7 +55,6 @@ export const updateRoomController = async (
 ) => {
   try {
     const { id } = req.params
-    console.log(req.body)
     const room = await updateRoom(id, req.body)
 
     if(!room) {
