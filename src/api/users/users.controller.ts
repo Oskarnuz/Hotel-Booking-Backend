@@ -12,8 +12,10 @@ import {
   updateUserPicture,
   recoverPassword,
 } from "./users.services";
+
 import { AuthUser } from "../../auth/auth.types";
-import { log } from "console";
+import { sendNodeMailer } from "../../config/nodemailer";
+import { recoverEmail } from "../../utils/recoverEmail";
 export const getAllUsersController = async (
   req: Request,
   res: Response,
@@ -26,6 +28,7 @@ export const getAllUsersController = async (
     res.status(500).json({ message: "It's not possible to show Users" });
   }
 };
+
 export const createUserController = async (
   req: Request,
   res: Response,
@@ -156,8 +159,9 @@ export const recoverPasswordController = async (
     const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
     const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const numbers = "0123456789";
+
     let password = "";
-    
+
     password += uppercaseLetters.charAt(
       Math.floor(Math.random() * uppercaseLetters.length)
     );
@@ -185,7 +189,7 @@ export const recoverPasswordController = async (
     const UserUpdated = await updateUserPassword(user.id, {
       password: hashedPassword,
     });
-
+    await sendNodeMailer(recoverEmail(password, UserUpdated));
     res.status(201).json({ message: "Password Recovered", data: password });
   } catch (error: any) {
     res.status(500).json({ message: "It's not possible to show a User" });
