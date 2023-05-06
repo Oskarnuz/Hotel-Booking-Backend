@@ -1,0 +1,38 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const healthcheck_1 = __importDefault(require("./api/healthcheck"));
+const users_1 = __importDefault(require("./api/users"));
+const local_1 = __importDefault(require("./auth/local"));
+const amenities_1 = __importDefault(require("./api/amenities"));
+const bookings_1 = __importDefault(require("./api/bookings"));
+const inclusions_1 = __importDefault(require("./api/inclusions"));
+const payments_1 = __importDefault(require("./api/payments"));
+const policies_1 = __importDefault(require("./api/policies"));
+const tags_1 = __importDefault(require("./api/tags"));
+const reviews_1 = __importDefault(require("./api/reviews"));
+const rooms_1 = __importDefault(require("./api/rooms"));
+const hotels_1 = __importDefault(require("./api/hotels"));
+const roles_1 = __importDefault(require("./api/roles"));
+const emailsubscription_1 = __importDefault(require("./api/emailsubscription"));
+const checkout_1 = __importDefault(require("./api/checkout"));
+const routes = (app) => {
+    app.use('/api/healthcheck', healthcheck_1.default);
+    app.use('/api/users', users_1.default);
+    app.use('/auth/local', local_1.default);
+    app.use('/api/amenities', amenities_1.default);
+    app.use('/api/bookings', bookings_1.default);
+    app.use('/api/inclusions', inclusions_1.default);
+    app.use('/api/payments', payments_1.default);
+    app.use('/api/policies', policies_1.default);
+    app.use('/api/tags', tags_1.default);
+    app.use('/api/reviews', reviews_1.default);
+    app.use('/api/rooms', rooms_1.default);
+    app.use('/api/hotels', hotels_1.default);
+    app.use('/api/roles', roles_1.default);
+    app.use('/api/emailsubscription', emailsubscription_1.default);
+    app.use('/api/checkout', checkout_1.default);
+};
+exports.default = routes;

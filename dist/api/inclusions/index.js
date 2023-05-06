@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const inclusions_controller_1 = require("./inclusions.controller");
+const router = (0, express_1.Router)();
+router.get("/", inclusions_controller_1.getAllInclusionsController);
+router.post("/", inclusions_controller_1.createInclusionsController);
+router.patch("/:id", inclusions_controller_1.updateInclusionsController);
+router.delete("/:id", inclusions_controller_1.deleteInclusionsController);
+router.get('/:id', inclusions_controller_1.getInclusionByIdController);
+exports.default = router;

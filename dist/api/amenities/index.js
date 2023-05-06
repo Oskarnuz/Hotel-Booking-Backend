@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const amenities_controller_1 = require("./amenities.controller");
+const router = (0, express_1.Router)();
+router.get("/", amenities_controller_1.getAllAmenitiesController);
+router.post("/", amenities_controller_1.createAmenitiesController);
+router.patch("/:id", amenities_controller_1.updateAmenitiesController);
+router.delete("/:id", amenities_controller_1.deleteAmenitiesController);
+router.get('/:id', amenities_controller_1.getAmenitiesByIdController);
+exports.default = router;

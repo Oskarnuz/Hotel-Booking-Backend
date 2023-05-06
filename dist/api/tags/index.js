@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const tags_controller_1 = require("./tags.controller");
+const router = (0, express_1.Router)();
+router.get("/", tags_controller_1.getAllTagsController);
+router.post("/", tags_controller_1.createTagsController);
+router.patch("/:id", tags_controller_1.updateTagsController);
+router.delete("/:id", tags_controller_1.deleteTagsController);
+router.get("/:id", tags_controller_1.getTagByIdController);
+exports.default = router;
