@@ -1,7 +1,7 @@
-# Hotel Booking
-Final project to Make it Real, API to make bookings at the diferents Hotels.
+# Delta Booking
+Backend of Final project to Make it Real, API to make bookings at the diferents Hotels.
 
-##
+## Instalation
 
 1. npm init -y
 2. npm i express cors morgan @prisma/client
@@ -17,15 +17,42 @@ Final project to Make it Real, API to make bookings at the diferents Hotels.
 ## Prisma
 
 1. npx prisma init
+2. Install prisma extension and configure format .vscode/settings.json
+
+- prisma/schema.prisma At this point the entities and their corresponding relationships are setted.
+
+3. npx prisma migrate dev "to migrate the schema prisma"
+4. npx prisma studio "to show the data base"
+
+## Data Base
+
+- To fill the database, run the seeder with the following command
+
+```
+$ npm run prisma:seed
+```
+- After this configure the role entity with user and admin 
+
+## Additional Settings
 
 - .env Add environment variables
 - .gitignore Update this file to ignore the node modules.
-- prisma/schema.prisma // modificar archivo
 
-2. Install prisma extension and configure format .vscode/settings.json
+### Local Development
 
-3. npx prisma migrate dev
-4. npx prisma studio
+```
+$ npm run dev
+```
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build
+
+```
+$ npm run build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
 ## Authors
 
